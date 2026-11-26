@@ -1,0 +1,1369 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>НЕПАЛ · Мера-Пик 6476 — Тепло Земли</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* VOICE: экспедиционный постер «Тепло Земли», тот же стиль, что у программ по Аннапурне
+   IDEA: полевая карта восхождения — линия маршрута от Катманду до вершины
+   PICTURE: фото с вершины с флагом + 3D-схема маршрута со столбиками высот
+   COLOUR and TYPE: кремовый фон / ночь, охра и жёлтый акцент; Oswald + Montserrat + Plex Mono
+   LAYOUT: обложка во весь экран, программа шторками по дням, фото-ленты внутри дней */
+:root{--y:#A87700;--w:#151515;--soft:rgba(21,21,21,.8);--fine:rgba(21,21,21,.56);--bg:#ECE6DA;--bg2:#E3DBCB;--line:rgba(21,21,21,.15);--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 .11 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color-scheme:light}
+html[data-theme="dark"],html:has(#themeSw:checked){--y:#F2C230;--w:#fff;--soft:rgba(255,255,255,.78);--fine:rgba(255,255,255,.52);--bg:#0B0B0C;--bg2:#121214;--line:rgba(255,255,255,.14);--noise:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 .05 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");color-scheme:dark}
+.hero,.fin{--y:#F2C230;--w:#fff;--soft:rgba(255,255,255,.82);--fine:rgba(255,255,255,.55);--line:rgba(255,255,255,.18);color:#fff}
+body{transition:background-color .35s ease,color .35s ease}
+*{box-sizing:border-box;min-width:0}
+html{scroll-behavior:smooth}
+body{margin:0;background-color:var(--bg);background-image:var(--noise);color:var(--w);font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:clip}
+img{display:block;max-width:100%}
+.wrap{max-width:1180px;margin:0 auto;padding:0 40px}
+.y{color:var(--y)}
+h2{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(30px,4.2vw,52px);line-height:1.08;margin:0 0 34px;letter-spacing:.01em}
+h3{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:clamp(24px,3vw,38px);line-height:1.1;margin:0 0 22px}
+p{margin:0 0 16px;font-size:17px;line-height:1.65;color:var(--soft)}
+b,strong{font-weight:600}
+.lead{font-size:20px;color:var(--w);line-height:1.55;font-weight:500}
+.note{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:14px;color:var(--fine);margin-top:22px;padding-top:18px;border-top:1px solid var(--line)}
+.tag{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.tag .rule{width:42px;height:1px;background:var(--y)}
+.tag em{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-style:normal;font-size:12px;letter-spacing:.22em;color:var(--soft)}
+/* hero */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
+.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%}
+.hero .sc{position:absolute;inset:0;background:linear-gradient(to left,rgba(6,6,6,.7),rgba(6,6,6,0) 60%),linear-gradient(to top,rgba(6,6,6,.94),rgba(6,6,6,.45) 45%,rgba(6,6,6,.12) 75%,rgba(6,6,6,.45))}
+.hero .wrap{position:relative;width:100%;display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;padding-top:120px;padding-bottom:80px}
+.route{width:300px;height:640px;overflow:visible}
+.route .rl{fill:none;stroke:var(--y);stroke-width:3;vector-effect:non-scaling-stroke;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s .3s ease forwards}
+.route .nd{fill:var(--y)} .route .nd.hi{stroke:rgba(6,6,6,.6);stroke-width:3}
+.route text{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;letter-spacing:2px}
+.route .nm{font-size:20px;fill:#fff} .route .al{font-size:19px;fill:var(--y)}
+@keyframes draw{to{stroke-dashoffset:0}}
+.htxt{text-align:right}
+.kick{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.24em;color:var(--soft);margin:0 0 16px}
+h1{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(48px,8.5vw,116px);line-height:.98;margin:0}
+.dates{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:24px}
+.dates .yr{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.2em;color:var(--fine);align-self:center;margin-right:4px}
+.dates span:not(.yr){font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:clamp(13px,1.6vw,17px);letter-spacing:.14em;color:var(--y);border:1px solid rgba(242,194,48,.6);padding:9px 14px}
+.hprice{margin-top:20px;display:flex;align-items:baseline;gap:12px;justify-content:flex-end}
+.hprice b{font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(40px,6vw,64px);line-height:1;color:var(--y)}
+.hprice span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;color:var(--soft);text-transform:uppercase}
+.hlede{margin:22px 0 0 auto;font-size:18px;color:var(--soft);max-width:560px}
+.cta{display:inline-block;margin-top:30px;font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:16px;color:#0B0B0C;background:var(--y);padding:16px 34px;text-decoration:none}
+.cta.ghost{background:transparent;color:var(--y);border:1px solid var(--y);margin-left:10px}
+/* strip */
+.strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:34px;padding-bottom:34px}
+.ft b{display:block;font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:600;font-size:34px;color:var(--y)}
+.ft span{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:12px;letter-spacing:.14em;color:var(--fine)}
+/* blocks */
+.blk{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;max-width:1180px;margin:0 auto;padding:80px 40px}
+.blk.rev .blk-img{order:2}
+.blk-img{overflow:hidden}
+.blk-img img{width:100%;height:520px;object-fit:cover}
+/* intro + карусель */
+.intro{padding:80px 0 70px}
+.intro h2{margin-bottom:22px}
+.car{overflow-x:auto;scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;scrollbar-width:none;margin-top:36px;padding:0 max(40px,calc((100vw - 1180px)/2 + 40px))}
+.car::-webkit-scrollbar{display:none}
+.car-track{display:flex;gap:14px;width:max-content;padding-right:40px}
+.car-i{flex:0 0 auto;width:min(76vw,420px);aspect-ratio:4/5;margin:0;overflow:hidden;border-radius:18px;scroll-snap-align:center;background:var(--bg2)}
+.car-i img{width:100%;height:100%;object-fit:cover;transform:scale(1.06);transition:transform 1.2s ease}
+.car-i.on img{transform:scale(1)}
+.car-dots{display:flex;justify-content:center;gap:8px;margin-top:20px;min-height:8px}
+.car-dots i{width:8px;height:8px;border-radius:4px;background:var(--line);transition:width .35s ease,background .35s ease}
+.car-dots i.on{width:26px;background:var(--y)}
+/* что вас ждёт */
+.wait{padding:90px 0;border-top:1px solid var(--line)}
+.path{max-width:760px;margin:10px auto 0}
+.pt{position:relative;padding:0 0 34px}
+.pt.l{padding-left:calc(12% + 36px)}
+.pt.r{padding-right:calc(12% + 36px)}
+.pt-dot{position:absolute;top:8px;width:20px;height:20px;border-radius:50%;background:var(--y);box-shadow:0 0 0 6px color-mix(in srgb,var(--y) 22%,transparent);animation:pulse 2.6s ease-in-out infinite}
+.pt.l .pt-dot{left:calc(12% - 10px)}
+.pt.r .pt-dot{right:calc(12% - 10px)}
+.pt-c{display:flex;flex-direction:column;gap:12px}
+.pt.r .pt-c{align-items:flex-end;text-align:right}
+.pt-ico{width:58px;height:58px;fill:none;stroke:var(--w);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pt-c p{margin:0;font-size:17px;color:var(--soft)}
+.pt-c p b{color:var(--w);font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.02em;font-size:19px;display:block;margin-bottom:4px}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 6px color-mix(in srgb,var(--y) 22%,transparent)}50%{box-shadow:0 0 0 12px color-mix(in srgb,var(--y) 0%,transparent)}}
+/* 3D-карта */
+.mapsec{padding:90px 0;background-color:var(--bg2);background-image:var(--noise);border-top:1px solid var(--line)}
+.m3-ctl{position:absolute;left:14px;top:14px;display:flex;flex-wrap:wrap;gap:8px;z-index:3}
+.m3-ctl button,.dnav button,.allbtn{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.1em;text-transform:uppercase;color:var(--w);background:color-mix(in srgb,var(--bg) 85%,transparent);border:1px solid var(--line);border-radius:22px;padding:11px 15px;cursor:pointer;min-height:44px}
+.m3-ctl button.on{background:var(--y);border-color:var(--y);color:#111}
+.m3-ctl button:focus-visible,.dnav button:focus-visible,.m3-days button:focus-visible{outline:2px solid var(--y);outline-offset:2px}
+.m3-hint{position:absolute;right:14px;bottom:12px;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--fine);z-index:3}
+.m3-kt{position:absolute;right:14px;top:14px;z-index:3;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.06em;color:var(--soft);text-align:right;line-height:1.5}
+.m3-kt b{color:var(--y);font-weight:500}
+.m3-days{display:flex;gap:8px;overflow-x:auto;scrollbar-width:none;padding:16px 2px 4px;scroll-snap-type:x proximity}
+.m3-days::-webkit-scrollbar{display:none}
+.m3-days button{flex:none;scroll-snap-align:start;min-width:92px;min-height:44px;padding:9px 12px;border-radius:12px;border:1px solid var(--line);background:transparent;color:var(--w);cursor:pointer;text-align:left;font:500 13px/1.25 Montserrat,Arial,sans-serif}
+.m3-days button i{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.08em;color:var(--y);margin-bottom:2px}
+.m3-days button.on{background:var(--y);border-color:var(--y);color:#111}
+.m3-days button.on i{color:#111}
+.prof{position:relative;height:230px;margin-top:22px}
+.prof svg{position:absolute;inset:0;width:100%;height:100%}
+.prof .bar{fill:color-mix(in srgb,var(--y) 22%,transparent)}
+.prof .bar.on{fill:color-mix(in srgb,var(--y) 55%,transparent)}
+.prof .ln{fill:none;stroke:var(--y);stroke-width:2.5}
+.prof .dt{fill:var(--bg);stroke:var(--y);stroke-width:2}
+.prof .gr{stroke:var(--line)}
+.prof text{font-family:"IBM Plex Mono",monospace;font-size:11px;fill:var(--fine)}
+.prof .tp{fill:var(--w);font-size:12px}
+.legend{display:flex;flex-wrap:wrap;gap:8px 22px;margin-top:10px;font-family:"IBM Plex Mono",monospace;font-size:12px;color:var(--fine)}
+.legend span::before{content:"";display:inline-block;width:14px;height:10px;margin-right:8px;vertical-align:0;background:color-mix(in srgb,var(--y) 30%,transparent)}
+.legend span.s::before{height:3px;background:var(--y);vertical-align:3px}
+.legend span.h::before{height:0;border-top:2px dashed var(--fine);vertical-align:3px}
+/* программа */
+.prog{padding:90px 0;border-top:1px solid var(--line)}
+.prog-top{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.prog-top h2{margin:0}
+.allbtn{display:none;color:var(--y);border-color:var(--y);background:none;border-radius:0}
+.stg{border-top:1px solid var(--line)}
+.stg:last-of-type{border-bottom:1px solid var(--line)}
+.stg summary{list-style:none;display:grid;grid-template-columns:76px 1fr 34px;gap:18px;align-items:center;padding:22px 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.stg summary::-webkit-details-marker{display:none}
+.stg summary:focus-visible,.more summary:focus-visible,.gd summary:focus-visible{outline:2px solid var(--y);outline-offset:4px}
+.stg-n{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:600;font-size:34px;line-height:1;color:var(--y)}
+.stg-h{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:500;text-transform:uppercase;font-size:22px;letter-spacing:.03em;line-height:1.2;display:flex;flex-wrap:wrap;gap:6px 14px;align-items:baseline}
+.stg-h em{font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;color:var(--y);text-transform:none}
+.stg.key .stg-n{background:var(--y);color:#111;padding:6px 8px;border-radius:8px;font-size:28px;text-align:center}
+.stg-i{width:34px;height:34px;border:1px solid var(--line);border-radius:50%;position:relative;transition:transform .3s ease,background-color .3s ease,border-color .3s ease}
+.stg-i::before,.stg-i::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:1.5px;background:var(--w);transform:translate(-50%,-50%)}
+.stg-i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s ease}
+.stg[open] .stg-i,.more[open] .stg-i,.gd[open] .stg-i{background:var(--y);border-color:var(--y)}
+.stg[open] .stg-i::before,.stg[open] .stg-i::after,.more[open] .stg-i::before,.more[open] .stg-i::after,.gd[open] .stg-i::before,.gd[open] .stg-i::after{background:#0B0B0C}
+.stg[open] .stg-i::after,.more[open] .stg-i::after,.gd[open] .stg-i::after,.nin[open] .stg-i::after{transform:translate(-50%,-50%) rotate(0deg)}
+.stg-b{padding:0 52px 26px 94px;animation:open .35s ease}
+.stg-b p{margin:0 0 12px;font-size:16px}
+.stg-m{margin-top:12px;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--y)}
+@keyframes open{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}
+.ph-w{position:relative;overflow:hidden;border-radius:14px;margin:0 0 18px;aspect-ratio:16/10;background:var(--bg2)}
+.ph-w .stg-img,.ph-w img{width:100%;height:100%;object-fit:cover;display:block}
+.dcar{display:flex;gap:10px;overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch;margin:0 0 10px}
+.dcar::-webkit-scrollbar{display:none}
+.dc-i{flex:0 0 auto;width:min(70%,330px);aspect-ratio:4/5;margin:0;overflow:hidden;border-radius:14px;scroll-snap-align:start;background:var(--bg2);position:relative}
+.dc-i.w{width:min(92%,560px);aspect-ratio:4/3}
+.dc-i img{width:100%;height:100%;object-fit:cover}
+.dnav{display:flex;gap:8px;margin:0 0 16px}
+.dnav button{border-radius:50%;width:44px;padding:0;font-size:16px;letter-spacing:0}
+.heli{margin-top:34px;padding:28px;border:1px solid color-mix(in srgb,var(--y) 55%,transparent);border-radius:18px}
+.heli h3{font-size:clamp(22px,2.6vw,30px);margin-bottom:14px}
+.heli ul{margin:0 0 14px;padding:0;list-style:none}
+.heli li{position:relative;padding-left:26px;margin:0 0 10px;font-size:16px;line-height:1.55;color:var(--soft)}
+.heli li::before{content:"";position:absolute;left:0;top:12px;width:14px;height:1px;background:var(--y)}
+.heli li b{color:var(--w)}
+/* подробнее — шторки */
+.mores{padding:90px 0;border-top:1px solid var(--line)}
+.more{border-top:1px solid var(--line)}
+.more:last-of-type{border-bottom:1px solid var(--line)}
+.more summary{list-style:none;display:grid;grid-template-columns:1fr 34px;gap:18px;align-items:center;padding:22px 0;cursor:pointer;-webkit-tap-highlight-color:transparent}
+.more summary::-webkit-details-marker{display:none}
+.mo-h em{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.18em;color:var(--y);margin-bottom:6px}
+.mo-h span{font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:22px;line-height:1.15;letter-spacing:.01em}
+.mo-b{display:grid;grid-template-columns:1fr 1fr;gap:36px;padding:4px 0 32px;animation:open .35s ease}
+.mo-b.one{grid-template-columns:1fr;max-width:820px}
+.ph-w.mo{aspect-ratio:auto;height:360px;margin:0}
+.mo-t p:last-child{margin-bottom:0}
+.mo-t ul{margin:0 0 14px;padding:0;list-style:none}
+.mo-t li{position:relative;padding-left:24px;margin:0 0 9px;font-size:16px;line-height:1.55;color:var(--soft)}
+.mo-t li::before{content:"";position:absolute;left:0;top:12px;width:12px;height:1px;background:var(--y)}
+/* почему, команда */
+.why{padding:90px 0;border-top:1px solid var(--line)}
+.why ul{margin:0;padding:0;list-style:none;max-width:860px}
+.why li{position:relative;padding-left:30px;font-size:17px;line-height:1.6;color:var(--soft);margin-bottom:16px}
+.why li::before{content:"";position:absolute;left:0;top:13px;width:18px;height:1px;background:var(--y)}
+.team{padding:90px 0;border-top:1px solid var(--line)}
+.tm{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:36px;max-width:900px}
+.tm-c .ph-w{aspect-ratio:4/5}
+.tm-c em{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;color:var(--y);margin:0 0 8px}
+.tm-c h4{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:600;text-transform:uppercase;font-size:24px;letter-spacing:.02em;margin:0 0 10px}
+.tm-c p{font-size:15px}
+/* цена */
+.price{position:relative;padding:90px 0;overflow:hidden}
+.price>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 55%}
+.price .sc{position:absolute;inset:0;background:rgba(236,230,218,.91)}
+html[data-theme="dark"] .price .sc,html:has(#themeSw:checked) .price .sc{background:rgba(8,8,9,.84)}
+.price .wrap{position:relative}
+.pnum{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:700;font-size:clamp(56px,10vw,120px);line-height:1;color:var(--y);margin-bottom:6px;white-space:nowrap}
+.psub{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:13px;letter-spacing:.16em;color:var(--soft);margin-bottom:40px}
+.cols{display:grid;grid-template-columns:1fr 1fr;gap:48px}
+.cols h5{margin:0 0 16px;padding-bottom:12px;font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-weight:400;font-size:12px;letter-spacing:.16em;color:var(--y);border-bottom:1px solid rgba(242,194,48,.4)}
+.cols ul{margin:0;padding:0;list-style:none}
+.cols li{position:relative;padding-left:22px;font-size:15px;line-height:1.5;color:var(--soft);margin-bottom:10px}
+.cols li::before{content:"+";position:absolute;left:0;color:var(--y);font-family:"IBM Plex Mono",monospace;font-size:13px}
+.cols .off-l li{color:var(--soft)}
+.cols .off-l li::before{content:"—";color:var(--fine)}
+.cols li small{display:block;font-size:13px;color:var(--fine)}
+/* снаряжение */
+.gear{padding:90px 0;background-color:var(--bg2);background-image:var(--noise);border-top:1px solid var(--line)}
+.gcount{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.12em;color:var(--soft);margin:-10px 0 24px}
+.gcount b{color:var(--y);font-weight:500}
+.layers{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin:0 0 30px}
+.layer{border:1px solid var(--line);border-radius:14px;padding:16px}
+.layer b{display:block;font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:18px;margin-bottom:6px}
+.layer span{font-size:14px;line-height:1.45;color:var(--soft)}
+.gd{border-top:1px solid var(--line)}
+.gd:last-of-type{border-bottom:1px solid var(--line)}
+.gd summary{list-style:none;display:grid;grid-template-columns:1fr auto 34px;gap:16px;align-items:center;padding:20px 0;cursor:pointer}
+.gd summary::-webkit-details-marker{display:none}
+.gd-h{font-family:Oswald,sans-serif;font-weight:600;font-size:22px;letter-spacing:.04em}
+.gd-n{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.12em;color:var(--y)}
+.gd.give .gd-h{color:var(--y)}
+.chk{list-style:none;margin:0;padding:0 0 22px;columns:2;column-gap:40px;animation:open .35s ease}
+.chk li{break-inside:avoid;margin:0 0 6px}
+.chk label{display:grid;grid-template-columns:24px 1fr;gap:12px;align-items:start;cursor:pointer;padding:6px 0}
+.chk input{position:absolute;opacity:0;pointer-events:none}
+.chk .bx{width:22px;height:22px;border:1.5px solid var(--fine);border-radius:6px;position:relative;margin-top:1px;transition:background .2s,border-color .2s}
+.chk .bx::after{content:"";position:absolute;left:6px;top:2px;width:6px;height:11px;border:solid #0B0B0C;border-width:0 2.5px 2.5px 0;transform:rotate(45deg) scale(.4);opacity:0;transition:all .2s}
+.chk input:checked+.bx{background:var(--y);border-color:var(--y)}
+.chk input:checked+.bx::after{opacity:1;transform:rotate(45deg) scale(1)}
+.chk input:focus-visible+.bx{outline:2px solid var(--y);outline-offset:2px}
+.chk .tx{font-size:15px;line-height:1.45;color:var(--soft);transition:color .2s}
+.chk input:checked~.tx{color:var(--fine);text-decoration:line-through;text-decoration-color:var(--y)}
+.gv{padding:0 0 24px;animation:open .35s ease}
+.gv ul{margin:0 0 14px;padding:0;list-style:none;columns:2;column-gap:40px}
+.gv li{position:relative;padding-left:22px;margin:0 0 9px;font-size:15px;color:var(--soft);break-inside:avoid}
+.gv li::before{content:"+";position:absolute;left:0;color:var(--y);font-family:"IBM Plex Mono",monospace}
+.tips{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:30px}
+.tip{border:1px solid var(--line);border-radius:14px;padding:18px}
+.tip b{display:block;font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;font-size:17px;margin-bottom:6px;color:var(--y)}
+.tip span{font-size:15px;line-height:1.5;color:var(--soft)}
+/* вопросы, видео, галерея */
+.vband{padding:0 max(40px,calc((100vw - 1180px)/2 + 40px)) 0;margin-top:70px}
+.vid.wide{aspect-ratio:16/9;max-height:80vh}
+.vid.vtall{aspect-ratio:3/4;max-height:680px;width:100%}
+.vid video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.vsnd{position:absolute;right:14px;bottom:14px;min-height:44px;padding:10px 16px;border-radius:22px;border:1px solid rgba(255,255,255,.4);background:rgba(10,10,10,.55);color:#fff;font:600 13px/1 Montserrat,Arial,sans-serif;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.vsnd:focus-visible{outline:2px solid #F2C230;outline-offset:2px}
+@media(max-width:880px){.vband{margin-top:40px}}
+
+.faqs{padding:90px 0;border-top:1px solid var(--line)}
+.video{padding:90px 0;border-top:1px solid var(--line)}
+.vid{position:relative;border-radius:18px;overflow:hidden;aspect-ratio:16/9;background:#111}
+.vid img{width:100%;height:100%;object-fit:cover;opacity:.75}
+.vid-c{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#fff;text-align:center;padding:20px}
+.vid-c i{width:78px;height:78px;border-radius:50%;background:rgba(242,194,48,.92);position:relative}
+.vid-c i::after{content:"";position:absolute;left:31px;top:24px;border-style:solid;border-width:15px 0 15px 24px;border-color:transparent transparent transparent #111}
+.vid-c span{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.14em}
+.gallery{padding:80px 0;border-top:1px solid var(--line)}
+.gal{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.gal-i{margin:0;overflow:hidden;border-radius:10px;position:relative}
+.gal-i img{width:100%;height:260px;object-fit:cover}
+.gal-i:nth-child(1),.gal-i:nth-child(6){grid-column:span 2}
+/* финал */
+.fin{position:relative;min-height:86vh;display:flex;align-items:center;overflow:hidden;text-align:center}
+.fin>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.fin .sc{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.94),rgba(6,6,6,.55))}
+.fin .wrap{position:relative;padding:100px 40px}
+.huge{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:700;font-size:clamp(50px,10vw,130px);line-height:.95;color:var(--y);display:block;margin-bottom:14px}
+.sign{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:13px;letter-spacing:.2em;color:var(--fine);margin-top:50px;padding-top:22px;border-top:1px solid var(--line)}
+/* тема */
+.theme-sw{position:fixed;top:0;left:0;width:1px;height:1px;opacity:0;pointer-events:none}
+.theme-sw:focus-visible+.theme{outline:2px solid #F2C230;outline-offset:3px}
+.theme{position:fixed;user-select:none;-webkit-user-select:none;top:14px;right:14px;z-index:50;display:flex;align-items:center;gap:10px;background:rgba(236,230,218,.8);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);border:1px solid rgba(21,21,21,.18);border-radius:30px;padding:6px 8px 6px 14px;color:#151515;font-family:"IBM Plex Mono",monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;cursor:pointer}
+.theme i{width:40px;height:22px;border-radius:11px;background:rgba(21,21,21,.2);position:relative;transition:background .3s}
+.theme i::after{content:"";position:absolute;top:3px;left:3px;width:16px;height:16px;border-radius:50%;background:#A87700;transition:transform .3s}
+html[data-theme="dark"] .theme,html:has(#themeSw:checked) .theme{background:rgba(11,11,12,.6);border-color:rgba(255,255,255,.22);color:#fff}
+html[data-theme="dark"] .theme i,html:has(#themeSw:checked) .theme i{background:rgba(255,255,255,.25)}
+html[data-theme="dark"] .theme i::after,html:has(#themeSw:checked) .theme i::after{transform:translateX(18px);background:#F2C230}
+/* появление */
+html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
+html.js .rv.in{opacity:1;transform:none}
+html.js .allbtn{display:inline-block}
+h1,h2,h3,.stg-h,.mo-h span,.pt-c p b,.gd-h,.psub,.lead{text-wrap:balance}
+p,li,.chk .tx{text-wrap:pretty}
+.dates span,.hprice,.ft b{white-space:nowrap}
+@media(max-width:1000px){.layers{grid-template-columns:1fr 1fr}}
+@media(max-width:880px){
+ .hero .wrap{grid-template-columns:1fr;gap:24px;padding-top:100px}
+ .route{width:240px;height:400px;order:2}.htxt{text-align:left}.dates,.hprice{justify-content:flex-start}.hlede{margin-left:0}
+ .strip .wrap{grid-template-columns:1fr 1fr}
+ .blk{grid-template-columns:1fr;gap:26px;padding:56px 24px}
+ .blk.rev .blk-img{order:0}.blk-img img{height:340px}
+ .wrap{padding:0 24px}.cols{grid-template-columns:1fr;gap:30px}
+ .stg summary{grid-template-columns:50px 1fr 30px;gap:12px;padding:18px 0}.stg-n{font-size:26px}.stg.key .stg-n{font-size:20px}.stg-h{font-size:18px}.stg-i{width:30px;height:30px}.stg-b{padding:0 0 22px 0}
+ .intro{padding:60px 0 56px}.car{padding:0 24px}.car-track{padding-right:24px}
+ .wait,.mores,.mapsec,.prog,.why,.team,.gear,.faqs,.video{padding:64px 0}
+ .pt.l{padding-left:calc(8% + 30px)}.pt.r{padding-right:calc(8% + 30px)}
+ .pt.l .pt-dot{left:calc(8% - 10px)}.pt.r .pt-dot{right:calc(8% - 10px)}
+ .pt-ico{width:50px;height:50px}.pt-c p{font-size:16px}
+ .mo-b{grid-template-columns:1fr;gap:20px}.ph-w.mo{height:260px}.mo-h span{font-size:19px}
+ .chk,.gv ul{columns:1}.tm{grid-template-columns:1fr}.tips{grid-template-columns:1fr}
+ .gal{grid-template-columns:1fr 1fr;gap:6px}.gal-i img{height:170px}
+ .ph-w{aspect-ratio:4/3}
+ .m3-kt{display:none}
+}
+@media(max-width:600px){.layers{grid-template-columns:1fr}.cta.ghost{margin-left:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.route .rl{stroke-dashoffset:0}}
+/* ---------- встроенный редактор (#edit) */
+.ed-ui[hidden]{display:none!important}
+.ed-rel{position:relative}
+.edit-on [data-ed]{outline:1px dashed rgba(242,194,48,.6);outline-offset:3px;border-radius:2px;cursor:text}
+.edit-on [data-ed]:focus{outline:2px solid #F2C230;background:rgba(242,194,48,.1)}
+.edit-on img{cursor:pointer}
+.edit-on .theme{top:118px}
+.ed-bar{position:fixed;left:10px;right:10px;top:10px;z-index:100;display:flex;flex-wrap:wrap;gap:8px;align-items:center;max-width:760px;margin:0 auto;background:#111;color:#fff;border-radius:14px;padding:10px 12px;font:500 13px/1.25 Montserrat,Arial,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.35)}
+.ed-bar b{font-family:Oswald,Arial,sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-right:auto}
+.ed-bar button,.ed-panel button{font:600 12px/1 Montserrat,Arial,sans-serif;border-radius:10px;padding:10px 12px;cursor:pointer;border:0;background:#F2C230;color:#111}
+.ed-bar button.gh,.ed-panel button.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.ed-st{flex-basis:100%;font-size:11px;color:rgba(255,255,255,.62)}
+.ed-chip{position:absolute;top:10px;left:10px;z-index:40;background:rgba(17,17,17,.78);color:#fff;border:1px solid rgba(255,255,255,.35);border-radius:20px;padding:8px 12px;font:600 12px/1 Montserrat,Arial,sans-serif;cursor:pointer;-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px)}
+.ed-panel{position:fixed;left:10px;right:10px;bottom:10px;z-index:101;max-width:520px;margin:0 auto;background:#111;color:#fff;border-radius:18px;padding:16px 16px 12px;font:500 13px/1.3 Montserrat,Arial,sans-serif;box-shadow:0 12px 40px rgba(0,0,0,.45)}
+.ed-ph{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.ed-ph b{font-family:Oswald,Arial,sans-serif;font-weight:600;letter-spacing:.06em;text-transform:uppercase}
+.ed-row{display:grid;grid-template-columns:118px 1fr 52px;gap:10px;align-items:center;margin:10px 0}
+.ed-row input{width:100%;accent-color:#F2C230}
+.ed-row output{text-align:right;color:rgba(255,255,255,.7);font-size:12px}
+.ed-btns{display:flex;gap:8px;margin-top:8px}.ed-btns button{flex:1}
+.ed-toast{position:fixed;left:50%;top:132px;transform:translateX(-50%);z-index:102;background:#F2C230;color:#111;border-radius:12px;padding:12px 16px;font:600 13px/1.3 Montserrat,Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);max-width:90vw;text-align:center}
+.ed-fab{position:fixed;left:14px;bottom:14px;z-index:99;background:#111;color:#fff;border:1px solid rgba(255,255,255,.25);border-radius:30px;padding:12px 16px;font:600 13px/1 Montserrat,Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.3);cursor:pointer}
+.ed-bar button[disabled]{opacity:.45;cursor:default}
+html.tz-wait body{visibility:hidden}
+.ed-bar .yb{background:#111;color:#F2C230;border:1px solid #F2C230}
+.ed-hl{position:fixed;z-index:103;display:flex;gap:6px;background:#111;border-radius:12px;padding:6px;box-shadow:0 8px 24px rgba(0,0,0,.35)}
+.ed-hl button{font:600 13px/1 Montserrat,Arial,sans-serif;border-radius:9px;padding:10px 14px;border:0;background:#F2C230;color:#111;cursor:pointer}
+.ed-hl button.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+
+@media(max-width:880px){
+ .hero{background:linear-gradient(#081633,#10285c 55%,#0B0B0C)}
+ .hero>img{top:auto;bottom:0;height:var(--hih,62%);object-position:50% 45%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%)}
+ .route{margin-left:auto}
+ .hero .sc{background:linear-gradient(to bottom,rgba(6,6,6,0) 0%,rgba(6,6,6,.05) 55%,rgba(6,6,6,.55) 100%)}
+ .route text{paint-order:stroke;stroke:rgba(0,0,0,.55);stroke-width:4px}
+}
+.m3-live{position:relative;height:var(--mh,600px);min-height:440px}
+.m3-live[hidden],.m3-stage[hidden]{display:none}
+.m3-live .lb{position:relative;transform:none}
+.m3-walker{width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #F2C230;box-shadow:0 0 0 6px rgba(242,194,48,.3)}
+.m3-live .maplibregl-ctrl-attrib{font-size:10px}
+/* --- v2: обложка на телефоне, видео без рамок, линия пути, новая карта --- */
+.path{position:relative}
+.pt{z-index:1;padding-bottom:70px!important}
+.pt:last-child{padding-bottom:10px!important}
+.pt-line{position:absolute;inset:0;width:100%;height:100%;overflow:visible;pointer-events:none;z-index:0}
+.pt-line path{fill:none;stroke:var(--y);stroke-width:2.2;stroke-dasharray:7 8;opacity:.8;animation:march 1.8s linear infinite}
+@keyframes march{to{stroke-dashoffset:-30}}
+.vband{margin-top:60px;padding:0}
+.vid{position:relative;overflow:hidden;background:transparent;border-radius:0}
+.vid.wide{width:100%;aspect-ratio:16/9;border-radius:18px}
+.vwrap{position:relative}
+.vid.vtall{aspect-ratio:9/16;height:min(720px,82vh);width:auto;max-width:100%;margin:0 auto;border-radius:18px}
+.vwrap{display:flex;justify-content:center}
+.vwrap .vsnd{left:50%;right:auto;bottom:16px;transform:translateX(-50%)}
+.m3{position:relative;margin-top:30px;border:1px solid var(--line);border-radius:18px;overflow:hidden;background:radial-gradient(120% 90% at 50% 30%,color-mix(in srgb,var(--y) 8%,var(--bg)),var(--bg2))}
+.m3-stage{position:relative;height:var(--mh,580px);cursor:grab;touch-action:pan-y;user-select:none;-webkit-user-select:none}
+.m3-stage.drag{cursor:grabbing}
+.m3-stage canvas{position:absolute;inset:0;width:100%;height:100%;display:block}
+.m3-lab{position:absolute;inset:0;pointer-events:none}
+.lb{position:absolute;left:0;top:0;transform:translate(-50%,-100%);white-space:nowrap;padding:4px 9px;border-radius:9px;background:color-mix(in srgb,var(--bg) 90%,transparent);border:1px solid var(--line);font:500 12px/1.2 Montserrat,Arial,sans-serif;color:var(--w);text-align:center;box-shadow:0 4px 12px rgba(0,0,0,.16)}
+.lb i{display:block;font-style:normal;font-family:"IBM Plex Mono",monospace;font-size:11px;color:var(--y)}
+.lb.hi{background:var(--y);border-color:var(--y);color:#111;z-index:2}
+.lb.hi i{color:#111}
+.lb.top{font-size:13px;font-weight:600}
+.lb[hidden]{display:none}
+.m3-n{position:absolute;right:16px;bottom:44px;width:38px;height:38px;border-radius:50%;border:1px solid var(--line);background:color-mix(in srgb,var(--bg) 85%,transparent);display:grid;place-items:center;font:600 12px/1 "IBM Plex Mono",monospace;color:var(--w);z-index:3}
+.m3-n i{position:absolute;top:3px;left:50%;width:0;height:0;margin-left:-4px;border:4px solid transparent;border-bottom:7px solid var(--y);border-top:0}
+@media(max-width:880px){
+ .lb{font-size:11px;padding:3px 7px}.lb i{font-size:10px}
+}
+</style></head><body>
+<script type="application/json" id="tz-edits" data-tz>{"v":1,"t":{},"i":{}}</script>
+<input type="checkbox" id="themeSw" class="theme-sw" aria-label="Тёмная тема"><label for="themeSw" class="theme">Тема<i></i></label>
+
+<header class="hero"><img src="img/hero.jpg" alt="Иван и шерпа на вершине Мера-Пик с флагом «Тепло Земли»" fetchpriority="high"><div class="sc"></div><div class="wrap">
+<svg class="route" viewBox="0 0 300 640" aria-label="Набор высоты от Катманду до вершины">
+<polyline class="rl" points="30,600 110,505 30,410 110,315 30,220 110,130 30,40"/>
+<circle class="nd" cx="30" cy="600" r="7"/><text class="nm" x="54" y="596">КАТМАНДУ</text><text class="al" x="54" y="620">1 400</text>
+<circle class="nd" cx="110" cy="505" r="7"/><text class="nm" x="134" y="501">ЛУКЛА</text><text class="al" x="134" y="525">2 860</text>
+<circle class="nd" cx="30" cy="410" r="7"/><text class="nm" x="54" y="406">КОТЕ</text><text class="al" x="54" y="430">3 600</text>
+<circle class="nd" cx="110" cy="315" r="7"/><text class="nm" x="134" y="311">ТХАКНАК</text><text class="al" x="134" y="335">4 300</text>
+<circle class="nd" cx="30" cy="220" r="7"/><text class="nm" x="54" y="216">КХАРЕ</text><text class="al" x="54" y="240">4 900</text>
+<circle class="nd" cx="110" cy="130" r="7"/><text class="nm" x="134" y="126">ЛАГЕРЬ</text><text class="al" x="134" y="150">5 800</text>
+<circle class="nd hi" cx="30" cy="40" r="11"/><text class="nm" x="54" y="36">МЕРА-ПИК</text><text class="al" x="54" y="60">6 476</text>
+</svg>
+<div class="htxt">
+<p class="kick">НЕПАЛ · ДОЛИНА ХИНКУ</p>
+<h1>МЕРА-ПИК<br><span class="y">6 476 М</span></h1>
+<div class="dates"><span class="yr">2027</span><span>24.03 — 10.04</span></div>
+<div class="hprice"><b>3 300 $</b><span>за участника</span></div>
+<p class="hlede">Твой первый шеститысячник. Идём к нему лесной долиной Хинку, без толп Эвереста, и при желании возвращаемся вертолётом, не перевалом.</p>
+<a class="cta" href="https://t.me/Hanryy1" target="_blank" rel="noopener">Занять место</a><a class="cta ghost" href="#days">Программа</a>
+</div></div></header>
+
+<section class="strip"><div class="wrap">
+<div class="ft"><b>18</b><span>дней с Катманду</span></div>
+<div class="ft"><b>15</b><span>дней на треке</span></div>
+<div class="ft"><b>6 476 м</b><span>Мера-Пик</span></div>
+<div class="ft"><b>3 300 $</b><span>стоимость тура</span></div>
+</div></section>
+
+<section class="vband"><div class="wrap"><div class="vid wide" id="vidAtmo"><video src="vid/atmo.mp4" poster="img/atmo_poster.jpg" muted loop playsinline preload="metadata" aria-label="Рассвет над Гималаями с вершины Меры"></video></div></div></section>
+
+<section class="intro"><div class="wrap">
+<div class="tag rv"><span class="rule"></span><em>О ВОСХОЖДЕНИИ</em></div>
+<h2 class="rv">ТВОЙ ПЕРВЫЙ <span class="y">ШЕСТИТЫСЯЧНИК</span></h2>
+<p class="lead rv">Мера-Пик — самый высокий трекинговый пик Непала. Мы поднимаемся на Мера-Центральную (6 461 м) после двух недель пути через рододендроновые леса, шерпские деревни и ледники долины Хинку.</p>
+<p class="rv">Здесь нет вертикальных стен: нужно уметь идти в высотных ботинках с кошками и в связке, и этому мы учим на техдне. Главное — плавная акклиматизация, поэтому темп мягкий, а в программе есть запасной день на погоду.</p>
+</div>
+<div class="car" id="car"><div class="car-track">
+<figure class="car-i"><img src="img/pano2.jpg" alt="Гималаи над облаками с вершины Меры" loading="lazy"></figure>
+<figure class="car-i"><img src="img/tentview.jpg" alt="Штурмовой лагерь над облаками" loading="lazy"></figure>
+<figure class="car-i"><img src="img/bridge.jpg" alt="Подвесной мост с молитвенными флажками" loading="lazy"></figure>
+<figure class="car-i"><img src="img/stars.jpg" alt="Звёздное небо над палатками лагеря" loading="lazy"></figure>
+<figure class="car-i"><img src="img/lake.jpg" alt="Озеро Сабай-Тшо в тумане" loading="lazy"></figure>
+<figure class="car-i"><img src="img/sunrise.jpg" alt="Рассвет на подъёме к вершине" loading="lazy"></figure>
+<figure class="car-i"><img src="img/mera.jpg" alt="Мера-Пик в облаках" loading="lazy"></figure>
+<figure class="car-i"><img src="img/bw.jpg" alt="Силуэт на фоне снежных гор" loading="lazy"></figure>
+</div></div>
+<div class="car-dots" id="carDots"></div>
+</section>
+
+<div class="blk rv"><div class="blk-img"><img src="img/mera.jpg" alt="Снежная шапка Мера-Пик" loading="lazy"></div>
+<div><div class="tag"><span class="rule"></span><em>ПЕРВЫЙ ШАГ В АЛЬПИНИЗМЕ</em></div>
+<h3>ИДЕАЛЬНАЯ ВЕРШИНА, ЧТОБЫ <span class="y">ПОПРОБОВАТЬ ВЫСОТУ</span></h3>
+<p>Мера-Пик считается трекинговой вершиной: технически несложный маршрут без вертикальных стен и сложных скальных участков. Мы идём по леднику в кошках и связке, а всё снаряжение выдаём на месте.</p>
+<p>Маршрут подходит тем, кто уже бывал на высотах 4 000–5 000 м и хочет сделать следующий шаг — выше 6 000 м.</p></div></div>
+
+<div class="blk rev rv"><div class="vwrap"><div class="vid vtall" id="vidTop"><video src="vid/drone.mp4" poster="img/drone_poster.jpg" muted loop playsinline preload="metadata" aria-label="Съёмка с дрона на вершине Мера-Пик"></video></div><button type="button" class="vsnd" aria-label="Включить звук">🔇 Звук</button></div>
+<div><div class="tag"><span class="rule"></span><em>ЛУЧШАЯ ПАНОРАМА</em></div>
+<h3>ПЯТЬ ВОСЬМИТЫСЯЧНИКОВ <span class="y">ОДНОВРЕМЕННО</span></h3>
+<p>С вершины открывается один из самых сильных видов в мире: Эверест, Лхоцзе, Макалу, Канченджанга и Чо-Ойю в одной панораме.</p>
+<p>Как будто смотришь на Гималаи с птичьего полёта, с вертолёта. На рассвете вся эта стена гор загорается прямо перед тобой.</p></div></div>
+
+<section class="wait"><div class="wrap">
+<div class="tag rv"><span class="rule"></span><em>ЧТО ВАС ЖДЁТ</em></div>
+<h2 class="rv">ПУТЬ <span class="y">К ВЕРШИНЕ</span></h2>
+<div class="path" id="ptPath"><svg class="pt-line" id="ptLine" aria-hidden="true"><path/></svg>
+<div class="pt l rv"><span class="pt-dot"></span><div class="pt-c"><svg class="pt-ico" viewBox="0 0 64 64"><path d="M10 52 L26 26 L34 38 L42 22 L56 52 Z"/><path d="M22 52 c4-8 8-10 12-10"/></svg><p><b>Мягкий заход лесом</b>Через Пайю, Пангом и Рамайло-Данду вместо резкого набора высоты через перевал. Почти без других групп.</p></div></div>
+<div class="pt r rv"><span class="pt-dot"></span><div class="pt-c"><svg class="pt-ico" viewBox="0 0 64 64"><path d="M8 44 c8-6 16-6 24 0 s16 6 24 0"/><path d="M14 30 c6-4 12-4 18 0 s12 4 18 0"/><circle cx="32" cy="14" r="5"/></svg><p><b>Две акклиматизации</b>Радиалка на озеро Сабай-Тшо (4 450 м) и выход к леднику Меры (5 300 м): поднялись выше — спим ниже.</p></div></div>
+<div class="pt l rv"><span class="pt-dot"></span><div class="pt-c"><svg class="pt-ico" viewBox="0 0 64 64"><path d="M20 10 v44"/><path d="M20 12 h20 l-6 6 6 6 h-20"/><path d="M12 54 h40"/><path d="M36 40 l8 -8 8 8"/></svg><p><b>Техдень в Кхаре</b>Кошки, ледоруб, самозадержание, связка, жумар и спусковое устройство — всё отрабатываем перед штурмом.</p></div></div>
+<div class="pt r rv"><span class="pt-dot"></span><div class="pt-c"><svg class="pt-ico" viewBox="0 0 64 64"><path d="M6 52 L28 14 L38 30 L44 22 L58 52 Z"/><path d="M28 14 v-8 l8 3 -8 3"/><circle cx="50" cy="12" r="4"/></svg><p><b>Рассвет на 6 461 м</b>Ночной выход из штурмового лагеря, связка, фонари и рассвет над восточными Гималаями на вершине.</p></div></div>
+<div class="pt l rv"><span class="pt-dot"></span><div class="pt-c"><svg class="pt-ico" viewBox="0 0 64 64"><path d="M8 18 h48"/><path d="M32 18 v8"/><path d="M14 34 h30 c6 0 10 4 10 8 s-4 6 -10 6 h-24 c-4 0 -6 -4 -6 -8 z"/><path d="M22 48 v6 M40 48 v6 M16 54 h32"/></svg><p><b>Вертолёт по желанию</b>Из Коте или Кхаре прямо в Луклу, без обратного пути через перевал Затрава-Ла.</p></div></div>
+</div></div></section>
+
+<section class="mapsec" id="map"><div class="wrap">
+<div class="tag rv"><span class="rule"></span><em>МАРШРУТ</em></div>
+<h2 class="rv">МАРШРУТ <span class="y">НА КАРТЕ</span></h2>
+<p class="lead rv">Покрути схему пальцем или мышкой, нажми на день — и увидишь, где группа ночует и на какой высоте.</p>
+<div class="m3 rv">
+<div class="m3-live" id="m3live" hidden></div>
+<div class="m3-stage" id="m3s" aria-label="Объёмная схема маршрута: потяните, чтобы повернуть"><canvas id="m3c"></canvas><div class="m3-lab" id="m3lab"></div></div>
+<div class="m3-ctl"><button type="button" class="on" data-v="3d">3D</button><button type="button" data-v="top">Сверху</button><button type="button" data-v="play">▶ Пройти маршрут</button></div>
+<div class="m3-kt">Катманду <b>1 400 м</b><br>перелёт в Луклу ~35 мин</div>
+<div class="m3-n" id="m3n"><i></i>С</div>
+<div class="m3-hint">← потяни, чтобы повернуть →</div>
+</div>
+<div class="m3-days" id="m3d"></div>
+<div class="prof" id="prof"><svg id="profSvg" aria-label="Высотный профиль по дням"></svg></div>
+<div class="legend"><span>максимальная высота дня</span><span class="s">высота ночёвки</span><span class="h">вертолёт по желанию</span></div>
+<p class="note" id="m3note">Схема условная: рельеф и положение точек примерные, высоты ночёвок — реальные.</p>
+</div></section>
+
+<section class="prog" id="days"><div class="wrap">
+<div class="prog-top"><div><div class="tag"><span class="rule"></span><em>18 ДНЕЙ · 24.03 — 10.04.2027</em></div><h2>ПРОГРАММА <span class="y">ПО ДНЯМ</span></h2></div><button type="button" class="allbtn" id="allDays">Открыть все дни</button></div>
+
+<details class="stg" open><summary><span class="stg-n">1</span><span class="stg-h">Прилёт в Катманду <em>24.03 · 1 400 м</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="ph-w"><img class="stg-img" src="img/ktm.jpg" alt="Ступа Боднатх на закате" loading="lazy" style="object-position:50% 40%"></div>
+<p>Прилёт в Катманду, желательно до 13:00. Рекомендуем приезжать за 1–2 дня до тура: отдохнуть, привыкнуть ко времени и спокойно докупить снаряжение. Заселяемся в отель 4*.</p>
+<p>Вечером общий ужин-знакомство с командой и гидами: обсуждаем программу и высотный график, смотрим наш фильм и вручаем мерч «Тепло Земли». Проверяем снаряжение, которое вы уже успели купить, выдаём баулы.</p>
+<div class="stg-m">НОЧЁВКА: ОТЕЛЬ 4* · КАТМАНДУ 1 400 М</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">2</span><span class="stg-h">Перелёт в Луклу · Пайя <em>25.03 · 8 км · ~4,5 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/lukla.jpg" alt="Взлётная полоса аэропорта Луклы" loading="lazy"></figure><figure class="dc-i w"><img src="img/plane.jpg" alt="Гималаи из окна самолёта" loading="lazy"></figure><figure class="dc-i"><img src="img/bridge.jpg" alt="Подвесной мост и деревня" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Рано утром едем в аэропорт Катманду и вылетаем в Луклу — один из самых зрелищных аэропортов мира. Перелёт около 35 минут над главными хребтами Гималаев. Если погода нелётная, ждём окна или летим через аэропорт Рамечхап.</p>
+<p>Из Луклы стартуют маршруты к базовому лагерю Эвереста, а мы уходим на юг, в другую долину — Хинку. Сразу начинается красивая тропа по лесным склонам мимо горных деревень. Ближе к вечеру приходим в Пайю.</p>
+<div class="stg-m">2 860 → 2 730 М · НОЧЁВКА: ЛОДЖ, ПАЙЯ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">3</span><span class="stg-h">Пайя — Пангом <em>26.03 · 10 км · ~7 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/river1.jpg" alt="Переход через горную реку" loading="lazy"></figure><figure class="dc-i"><img src="img/laundry.jpg" alt="Двор горного лоджа" loading="lazy"></figure><figure class="dc-i"><img src="img/trail1.jpg" alt="Тропа по зелёным склонам" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Завтракаем и идём дальше по долине Хинку. Выходим из леса, проходим горные деревни и поля, переходим реки и ручьи. Весной здесь очень зелено и цветут рододендроны.</p>
+<p>Идём спокойно, не спеша, дышим — организм потихоньку привыкает к нагрузке и высоте. К вечеру приходим в Пангом.</p>
+<div class="stg-m">2 730 → ~2 850 М · НОЧЁВКА: ЛОДЖ, ПАНГОМ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">4</span><span class="stg-h">Пангом — Рамайло-Данда <em>27.03 · 7 км · ~5 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/ridge.jpg" alt="Подъём на хребет" loading="lazy"></figure><figure class="dc-i"><img src="img/dog.jpg" alt="Привал на камнях с шерпой" loading="lazy"></figure><figure class="dc-i"><img src="img/ravine.jpg" alt="Тропа в ущелье" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>После завтрака и лёгкой зарядки постепенно набираем высоту. Проходим большие камни мани с буддийскими символами и выходим из леса.</p>
+<p>Деревень всё меньше, людей тоже — мы уходим от основных туристических маршрутов. В хорошую погоду впервые видим нашу вершину, заснеженную Меру. Ночуем на хребте Рамайло-Данда.</p>
+<div class="stg-m">~2 850 → 3 270 М · НОЧЁВКА: ЛОДЖ, РАМАЙЛО-ДАНДА</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">5</span><span class="stg-h">Рамайло-Данда — Чхатра-Кхола <em>28.03 · 6 км · ~4 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/wfall.jpg" alt="Водопад у тропы" loading="lazy"></figure><figure class="dc-i"><img src="img/river2.jpg" alt="Бурная горная река" loading="lazy"></figure><figure class="dc-i w"><img src="img/boulders.jpg" alt="Тропа среди валунов" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Спускаемся в густой лес к реке. Местами тропа грязная и скользкая — пригодятся трекинговые палки. Короткий день, чтобы восстановиться перед подъёмом по долине.</p>
+<div class="stg-m">3 270 → 3 150 М · НОЧЁВКА: ЛОДЖ, ЧХАТРА-КХОЛА</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">6</span><span class="stg-h">Чхатра-Кхола — Коте <em>29.03 · 6,5–7 км · ~5 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/kbridge.jpg" alt="Крытый мост над бирюзовой рекой в Коте" loading="lazy"></figure><figure class="dc-i"><img src="img/klodge.jpg" alt="Лодж под водопадом" loading="lazy"></figure><figure class="dc-i"><img src="img/kselfie.jpg" alt="Иван у водопада" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Поднимаемся по долине через пихтовый лес с цветущими рододендронами, затем выходим на каменистые склоны над рекой. Можно встретить диких животных, но это редкость.</p>
+<p>К закату приходим в Коте — одно из главных поселений долины Хинку. Очень красивая деревня с водопадами, горными реками и скалами. Вечером идём погулять.</p>
+<div class="stg-m">3 150 → 3 600 М · НОЧЁВКА: ЛОДЖ, КОТЕ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">7</span><span class="stg-h">Коте — Тхакнак <em>30.03 · 8 км · ~5 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/gompa.jpg" alt="Буддийская гомпа под скалой" loading="lazy"></figure><figure class="dc-i"><img src="img/flags.jpg" alt="Тропа под молитвенными флажками" loading="lazy"></figure><figure class="dc-i"><img src="img/fog.jpg" alt="Группа идёт по долине в тумане" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Высоту набираем плавно и медленно: выше 4 000 м недостаток кислорода уже ощущается. Лес остаётся позади, его сменяют кустарники, альпийские луга и открытые склоны. В хорошую погоду видна вершина Кьяшар (6 769 м).</p>
+<p>По дороге заходим в небольшую буддийскую гомпу под скалой, которой около 200 лет: проводим пуджу и медитацию. К вечеру приходим в Тхакнак — здесь уже ледниковые морены.</p>
+<div class="stg-m">3 600 → 4 300 М · НОЧЁВКА: ЛОДЖ, ТХАКНАК</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">8</span><span class="stg-h">Акклиматизация: озеро Сабай-Тшо <em>31.03 · до 4 450 м</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/lake.jpg" alt="Бирюзовое озеро Сабай-Тшо" loading="lazy"></figure><figure class="dc-i"><img src="img/valley.jpg" alt="Вид на долину сверху" loading="lazy"></figure></div>
+<p>После завтрака неспешно выходим на радиальный маршрут к озеру Сабай-Тшо. Проводим время у воды, устраиваем пикник с чаем и возвращаемся ночевать в Тхакнак — поднялись выше, спим ниже.</p>
+<p>В хорошую погоду видны Мера-Пик, Кьяшар и Кусум-Кангуру. Вторая половина дня свободная: отдыхаем в лодже.</p>
+<div class="stg-m">РАДИАЛЬНЫЙ ВЫХОД · НОЧЁВКА: ЛОДЖ, ТХАКНАК 4 300 М</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">9</span><span class="stg-h">Тхакнак — Кхаре <em>01.04 · 5,5 км · ~4 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/khare.jpg" alt="Деревня Кхаре сверху" loading="lazy"></figure><figure class="dc-i"><img src="img/mera.jpg" alt="Вершина Меры над Кхаре" loading="lazy"></figure><figure class="dc-i"><img src="img/glodge.jpg" alt="Лодж с молитвенными флажками" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Кхаре — последняя деревня перед альпинистской частью маршрута. Идём по высокогорной долине и моренам мимо ледникового озера, деревьев уже нет. Набираем около 600 м: воздух заметно разрежен, идём медленнее и следим за дыханием.</p>
+<p>Посёлок стоит прямо под горой, и в хорошую погоду над нами видны все вершины Мера-Пик. Здесь заканчивается трекинговая часть — выдаём техническое снаряжение и отдыхаем.</p>
+<div class="stg-m">4 300 → ~4 900 М · НОЧЁВКА: ЛОДЖ, КХАРЕ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">10</span><span class="stg-h">Акклиматизация и техдень <em>02.04 · до 5 300 м</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/rope2.jpg" alt="Иван с верёвкой на техдне" loading="lazy"></figure><figure class="dc-i"><img src="img/rope1.jpg" alt="Верёвка и карабин" loading="lazy"></figure><figure class="dc-i"><img src="img/rope3.jpg" alt="Работа с жумаром на склоне" loading="lazy"></figure><figure class="dc-i"><img src="img/hut.jpg" alt="Каменная хижина под ледником" loading="lazy"></figure><figure class="dc-i"><img src="img/fist.jpg" alt="Выход к леднику Меры" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Утром выходим на ещё один акклиматизационный маршрут — к леднику Мера-Пик на высоту 5 300 м. Перекусываем и спускаемся в Кхаре.</p>
+<p>Во второй половине дня технические занятия: работа в связке и с верёвкой, подгонка кошек, хождение в высотных ботинках по снегу и льду, ледоруб, жумар и спусковое устройство. Проверяем снаряжение, собираем высотные рюкзаки, короткий брифинг — и спать. Завтра сложный день.</p>
+<div class="stg-m">НОЧЁВКА: ЛОДЖ, КХАРЕ ~4 900 М</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">11</span><span class="stg-h">Кхаре — штурмовой лагерь <em>03.04 · ~5 км · ~6 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i w"><img src="img/crev.jpg" alt="Тропа по леднику мимо трещины" loading="lazy"></figure><figure class="dc-i"><img src="img/snowteam.jpg" alt="Связка в высотных ботинках на снегу" loading="lazy"></figure><figure class="dc-i"><img src="img/tentview.jpg" alt="Палатка штурмового лагеря над облаками" loading="lazy"></figure><figure class="dc-i"><img src="img/noodles.jpg" alt="Обед в штурмовом лагере" loading="lazy"></figure><figure class="dc-i"><img src="img/tents.jpg" alt="Палатки в снегу" loading="lazy"></figure><figure class="dc-i"><img src="img/stars.jpg" alt="Ночь над штурмовым лагерем" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Рано просыпаемся, завтракаем, разминаемся и выходим. Сначала поднимаемся по каменистым склонам, потом выходим на ледник, надеваем высотные ботинки и кошки и идём в связке по снегу и льду. За день набираем около 900 м.</p>
+<p>Вокруг ледники, скалы и снежный склон Меры, а в хорошую погоду уже отсюда видна панорама Гималаев. В лагере отдыхаем, проводим заключительный брифинг, ещё раз проверяем снаряжение и фонарики. Ранний ужин и отбой: на вершину выходим ночью, около 00:00.</p>
+<div class="stg-m">~4 900 → 5 800 М · НОЧЁВКА: ПАЛАТКИ, ШТУРМОВОЙ ЛАГЕРЬ</div></div></details>
+
+<details class="stg key"><summary><span class="stg-n">12</span><span class="stg-h">Восхождение на Мера-Центральную <em>04.04 · 6 461 м</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/hero.jpg" alt="На вершине с флагом «Тепло Земли»" loading="lazy"></figure><figure class="dc-i"><img src="img/milky.jpg" alt="Млечный путь над склоном ночью" loading="lazy"></figure><figure class="dc-i w"><img src="img/sunrise.jpg" alt="Рассвет на подъёме" loading="lazy"></figure><figure class="dc-i"><img src="img/ropeteam.jpg" alt="Связка поднимается к вершинному куполу" loading="lazy"></figure><figure class="dc-i w"><img src="img/pano1.jpg" alt="Селфи на фоне панорамы Эвереста" loading="lazy"></figure><figure class="dc-i w"><img src="img/pano2.jpg" alt="Восьмитысячники над облаками" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Кульминация путешествия. Просыпаемся глубокой ночью, завтракаем, надеваем ботинки и кошки, встаём в связку, включаем фонари и выходим. Идём не спеша: шаг, дыхание, медленный темп. Выше 6 000 м бережём силы.</p>
+<p>Ближе к вершине нас встречает рассвет, и открывается панорама восточных Гималаев: Чо-Ойю, Эверест, Лхоцзе, Макалу, Канченджанга. Подъём занимает около 6–7 часов. На вершине фотографируемся и спускаемся в штурмовой лагерь (около 3 ч), обедаем, собираем вещи и спускаемся в Кхаре, в наш лодж. Решение о развороте при плохой погоде или самочувствии принимает руководитель.</p>
+<div class="stg-m">ПОДЪЁМ ~6–7 Ч · СПУСК ~3 Ч + ДО КХАРЕ · НОЧЁВКА: ЛОДЖ, КХАРЕ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">13</span><span class="stg-h">Запасной день <em>05.04 · Кхаре</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="ph-w"><img class="stg-img" src="img/dining.jpg" alt="Панорамная столовая лоджа в Кхаре" loading="lazy"></div>
+<p>Закладываем на случай плохой погоды в день восхождения или как день отдыха в Кхаре. Если погода хорошая и восхождение прошло по плану, день переносится на Луклу. Если в Лукле всё хорошо, он переходит в Катманду свободным днём.</p>
+<div class="stg-m">НОЧЁВКА: ЛОДЖ, КХАРЕ ~4 900 М</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">14</span><span class="stg-h">Кхаре — Тхакнак — Коте <em>06.04 · ~6–7 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/desc2.jpg" alt="Спуск по долине" loading="lazy"></figure><figure class="dc-i"><img src="img/desc1.jpg" alt="Река в лесу" loading="lazy"></figure></div>
+<p>Просыпаемся выспавшимися, неспешно завтракаем и спускаемся в Тхакнак на обед, а затем дальше — в нашу любимую Коте. Сбрасываем около 1 300 м: теплее, легче дышать.</p>
+<p>Отсюда, как и из Кхаре, по желанию можно улететь на вертолёте в Луклу. Либо на следующий день продолжаем путь пешком.</p>
+<div class="stg-m">~4 900 → 3 600 М · НОЧЁВКА: ЛОДЖ, КОТЕ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">15</span><span class="stg-h">Коте — Тхули-Кхарка <em>07.04 · 7 км · ~8 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/hut2.jpg" alt="Пастушья хижина среди скал" loading="lazy"></figure><figure class="dc-i"><img src="img/cliff.jpg" alt="Иван на скале в тумане" loading="lazy"></figure><figure class="dc-i"><img src="img/clouds.jpg" alt="Облака над хребтом" loading="lazy"></figure></div>
+<div class="dnav"><button type="button" aria-label="Назад">‹</button><button type="button" aria-label="Вперёд">›</button></div>
+<p>Выходим из Коте в сторону перевала Затрава-Ла. Подъём долгий и крутой — придётся поработать. Идём через рододендроновые леса и к вечеру приходим в Тхули-Кхарку под перевалом. Последняя ночёвка перед перевалом и возвращением в Луклу.</p>
+<div class="stg-m">3 600 → ~4 250 М · НОЧЁВКА: ЛОДЖ, ТХУЛИ-КХАРКА</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">16</span><span class="stg-h">Перевал Затрава-Ла — Лукла <em>08.04 · 10 км · ~9–10 ч</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="dcar"><figure class="dc-i"><img src="img/pass.jpg" alt="Молитвенные флажки на перевале" loading="lazy"></figure><figure class="dc-i w"><img src="img/runway2.jpg" alt="Лукла" loading="lazy"></figure></div>
+<p>Поднимаемся на перевал Затрава-Ла (около 4 600 м) — один из самых длинных переходов обратного пути. С перевала уже видна Лукла. Начинается долгий спуск: быстро теряем высоту и возвращаемся в лес. В апреле на перевале возможны снег и лёд.</p>
+<p>В Лукле замыкаем пешую часть и заканчиваем горную программу.</p>
+<div class="stg-m">4 250 → 4 600 → 2 840 М · НОЧЁВКА: ЛОДЖ, ЛУКЛА</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">17</span><span class="stg-h">Лукла — Катманду <em>09.04</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<div class="ph-w"><img class="stg-img" src="img/pashu.jpg" alt="Вечерняя церемония в Пашупатинатхе" loading="lazy" style="object-position:50% 55%"></div>
+<p>Утром вылетаем из Луклы в Катманду. Перелёт 30–35 минут и зависит от погоды: если рейс переносится, ждём окна или летим через Рамечхап. Остаток дня свободный, а вечером совместный ужин, вручение грамот, благодарности и прощание с группой.</p>
+<div class="stg-m">НОЧЁВКА: ОТЕЛЬ 4* · КАТМАНДУ</div></div></details>
+
+<details class="stg"><summary><span class="stg-n">18</span><span class="stg-h">Вылет домой <em>10.04</em></span><span class="stg-i"></span></summary><div class="stg-b">
+<p>Прощаемся с группой, выезжаем из отеля. Трансфер в аэропорт Катманду.</p></div></details>
+
+<div class="heli rv">
+<div class="tag"><span class="rule"></span><em>ПО ЖЕЛАНИЮ</em></div>
+<h3>ВЕРТОЛЁТОМ <span class="y">ВМЕСТО ПЕРЕВАЛА</span></h3>
+<ul>
+<li><b>Из Коте — 17 дней.</b> День 14 пешком Кхаре — Коте. День 15 (07.04) вертолёт Коте — Лукла и перелёт в Катманду. День 16 свободный, день 17 (09.04) вылет.</li>
+<li><b>Из Кхаре — 16 дней.</b> День 14 (06.04) вертолёт Кхаре — Лукла и перелёт в Катманду. День 15 свободный, день 16 (08.04) вылет.</li>
+</ul>
+<p>Вертолёт не входит в стоимость тура и оплачивается по факту теми, кто хочет лететь. Стоимость обсуждаем заранее. Полёт зависит от погоды; запасной вариант — пеший выход через Затрава-Ла.</p>
+</div>
+</div></section>
+
+<section class="mores"><div class="wrap">
+<div class="tag rv"><span class="rule"></span><em>ВАЖНО ЗНАТЬ</em></div>
+<h2 class="rv">ПОДРОБНЕЕ <span class="y">О ПУТЕШЕСТВИИ</span></h2>
+<details class="more"><summary><span class="mo-h"><em>ПРОЖИВАНИЕ</em><span>Где мы живём</span></span><span class="stg-i"></span></summary><div class="mo-b">
+<div class="ph-w mo"><img src="img/veranda.jpg" alt="Завтрак на веранде лоджа" loading="lazy"></div>
+<div class="mo-t"><ul>
+<li><b>Катманду:</b> отель 4*, двухместные номера, завтраки включены.</li>
+<li><b>На треке:</b> улучшенные горные лоджи с двухместными комнатами и общей столовой. С высотой удобства скромнее, душ и зарядка платные.</li>
+<li><b>Штурмовой лагерь:</b> палатки на 5 800 м, питание включено.</li>
+</ul><p>Лоджи на маршруте мы выбираем сами — те, где живём и где нам действительно нравится.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><em>ПОДГОТОВКА</em><span>Как готовиться к восхождению</span></span><span class="stg-i"></span></summary><div class="mo-b">
+<div class="ph-w mo"><img src="img/snowteam.jpg" alt="Связка на леднике" loading="lazy"></div>
+<div class="mo-t"><p>К восхождению желательно готовиться 1–2 месяца активными тренировками: кардио и выносливость.</p><p>Подробный план тренировок и чек-лист снаряжения отправим лично каждому участнику после бронирования.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><em>ОПЫТ</em><span>Подойдёт ли мне этот маршрут</span></span><span class="stg-i"></span></summary><div class="mo-b">
+<div class="ph-w mo"><img src="img/rope3.jpg" alt="Тренировка с верёвкой" loading="lazy"></div>
+<div class="mo-t"><ul>
+<li>Подходит тем, кто уже бывал на высотах 4 000–5 000 м. Опыта на 6 000 м не нужно.</li>
+<li>Главное — плавная акклиматизация: идём медленно, делаем акклиматизационные выходы и держим запасной день.</li>
+<li>Мера-Пик — трекинговая вершина: технически несложный маршрут без вертикальных стен. Идём в кошках и связке.</li>
+<li>Нужно уметь ходить в высотных ботинках с кошками — всему учим на техдне в Кхаре.</li>
+<li>Возраст: от 18 лет, верхнего ограничения нет.</li>
+</ul></div></div></details>
+<details class="more"><summary><span class="mo-h"><em>ВЕРТОЛЁТ</em><span>Как вернуться без перевала</span></span><span class="stg-i"></span></summary><div class="mo-b">
+<div class="ph-w mo"><img src="img/kbridge.jpg" alt="Деревня Коте" loading="lazy"></div>
+<div class="mo-t"><p>После восхождения можно улететь в Луклу из Кхаре или из Коте и не идти обратно через перевал Затрава-Ла. Тур тогда заканчивается на 1–2 дня раньше.</p><p>Вертолёт оплачивается по факту теми, кто хочет лететь, стоимость обсуждаем заранее. Полёт зависит от погоды.</p></div></div></details>
+</div></section>
+
+<section class="why"><div class="wrap">
+<div class="tag"><span class="rule"></span><em>ПОЧЕМУ С НАМИ</em></div>
+<h2>ПЯТЬ <span class="y">СЕЗОНОВ</span> В НЕПАЛЕ</h2>
+<ul>
+<li><span class="y">Гид, который ходит здесь сам.</span> Тропы и лоджи отобраны за пять сезонов в Непале.</li>
+<li>Шерпа-гид с опытом восхождений на Эверест, Ама-Даблам и другие вершины Гималаев.</li>
+<li>Мягкий заход лесом, два акклиматизационных выхода и запасной день на погоду.</li>
+<li>Всё техническое снаряжение выдаём на месте, а на техдне учим им пользоваться.</li>
+<li>Шеф-повар в команде: Иван подскажет, что есть на высоте, и устроит гастро-моменты по пути.</li>
+<li>Поддержка до тура и на треке: чат группы, план тренировок, подбор снаряжения и страховки.</li>
+</ul>
+</div></section>
+
+<section class="team"><div class="wrap">
+<div class="tag"><span class="rule"></span><em>КОМАНДА</em></div>
+<h2>КТО <span class="y">ПОВЕДЁТ</span></h2>
+<div class="tm">
+<div class="tm-c"><div class="ph-w"><img class="stg-img" src="img/rope2.jpg" alt="Иван Епихин" loading="lazy"></div><em>ГОРНЫЙ ГИД · ОСНОВАТЕЛЬ «ТЕПЛО ЗЕМЛИ»</em><h4>Иван Епихин</h4><p>Горный гид и профессиональный шеф-повар. Больше 7 лет в туризме, пятый сезон водит группы по Непалу. Сам выбирает маршруты и лоджи, в которых живёт группа.</p></div>
+<div class="tm-c"><div class="ph-w"><img class="stg-img" src="img/sherpa.jpg" alt="Фура Шерпа на вершине Эвереста" style="object-position:50% 35%" loading="lazy"></div><em>ШЕРПА-ГИД</em><h4>Фура Шерпа</h4><p>Опытный альпинист, более 12 лет в туризме. Восхождения на Эверест, Ама-Даблам и другие вершины Гималаев.</p></div>
+</div>
+<p class="note">В команде также портеры: один портер на двух участников.</p>
+</div></section>
+
+<section class="price" id="price"><img src="img/everest.jpg" alt="" loading="lazy"><div class="sc"></div><div class="wrap">
+<div class="tag"><span class="rule"></span><em>СТОИМОСТЬ</em></div>
+<div class="pnum">3 300 $</div>
+<div class="psub">ЗА УЧАСТНИКА · 18 ДНЕЙ · ПРЕДОПЛАТА 30%</div>
+<div class="cols">
+<div><h5>ВХОДИТ В СТОИМОСТЬ</h5><ul>
+<li>Руководитель программы — горный гид, шерпа-гид, страховка гидов и портеров</li>
+<li>Один портер на двух участников: до 15–20 кг личных вещей на человека. Баулы выдаём</li>
+<li>Встреча в аэропорту, все трансферы, трансфер в аэропорт при вылете</li>
+<li>Внутренние перелёты Катманду — Лукла — Катманду</li>
+<li>Двухместное размещение: отель 4* в Катманду, улучшенные лоджи на маршруте, палатки в штурмовом лагере</li>
+<li>Завтраки в Катманду и питание в штурмовом лагере перед восхождением</li>
+<li>Все разрешения: на восхождение, национальный парк и маршрутные пермиты</li>
+<li>Техническое альпинистское снаряжение, в том числе групповое и мягкие кошки</li>
+<li>Технический день с обучением работе на верёвках и хождению в кошках</li>
+<li>Общий онлайн-чат группы, поддержка до и во время трека</li>
+<li>Подробный чек-лист снаряжения и план тренировок — каждому лично</li>
+</ul></div>
+<div class="off-l"><h5>НЕ ВХОДИТ В СТОИМОСТЬ</h5><ul>
+<li>Международный перелёт до Катманду и обратно</li>
+<li>Виза в Непал</li>
+<li>Личная страховка с покрытием высотного альпинизма до 6 500 м и вертолётной эвакуации</li>
+<li>Вертолёт из Коте или Кхаре в Луклу<small>по желанию, оплата по факту, стоимость обсуждаем заранее</small></li>
+<li>Высотный пуховик, пуховые штаны, спальник<small>свои или аренда в Катманду</small></li>
+<li>Питание: обеды и ужины в Катманду, еда в лоджах на треке, снеки, напитки, алкоголь</li>
+<li>Чаевые персоналу</li>
+<li>Платные услуги в лоджах: интернет, зарядка, горячий душ. Личные расходы</li>
+<li>Дополнительные ночи в Катманду, одноместное размещение</li>
+<li>Расходы из-за изменений программы: погода, транспорт, медицина</li>
+<li>Экскурсии и входные билеты в Катманду</li>
+</ul></div>
+</div>
+<a class="cta" href="https://t.me/Hanryy1" target="_blank" rel="noopener">Занять место</a>
+</div></section>
+
+<section class="gear" id="gear"><div class="wrap">
+<div class="tag"><span class="rule"></span><em>СНАРЯЖЕНИЕ</em></div>
+<h2>ЧТО <span class="y">ВЗЯТЬ С СОБОЙ</span></h2>
+<p class="gcount">Собрано: <b id="gCount">0</b> · подробный чек-лист пришлём лично</p>
+<div class="layers">
+<div class="layer"><b>Базовый</b><span>Термобельё, лонгслив, тонкие носки — отводят влагу</span></div>
+<div class="layer"><b>Утепляющий</b><span>Флис, лёгкий пуховик, тёплые носки</span></div>
+<div class="layer"><b>Штурмовой</b><span>Тёплый пуховик, пуховые штаны, верхонки</span></div>
+<div class="layer"><b>Защитный</b><span>Мембранные куртка и штаны от ветра и снега</span></div>
+</div>
+<details class="gd give"><summary><span class="gd-h">Что выдаём мы</span><span class="gd-n">В СТОИМОСТИ</span><span class="stg-i"></span></summary><div class="gv"><ul>
+<li>Высотные альпинистские ботинки</li><li>Кошки и мягкие кошки</li><li>Нижняя обвязка, страховочная система</li><li>Ледоруб</li><li>Каска</li><li>Жумар, спусковое устройство</li><li>Карабины</li><li>Основная и расходные верёвки</li><li>Баулы для портеров</li></ul>
+<p>Выдаём в Кхаре или в Катманду. Свои альпинистские ботинки тоже можно взять. Пуховый костюм отдельно не нужен: хватит тёплой высотной пуховки и пуховых штанов.</p></div></details>
+<details class="gd"><summary><span class="gd-h">Одежда</span><span class="gd-n">11</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Термобельё, 2–3 комплекта</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Флисовая кофта</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Лёгкая пуховка</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Тёплая высотная пуховка (своя или аренда)</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Пуховые штаны (свои или аренда)</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Мембранные куртка и штаны</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Трекинговые штаны</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Перчатки тонкие и тёплые, варежки-верхонки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Шапка, баф, балаклава</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Кепка или панама</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Очки категории 4 и горнолыжная маска</span></label></li>
+</ul></details>
+<details class="gd"><summary><span class="gd-h">Обувь</span><span class="gd-n">5</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Высокие трекинговые ботинки Gore-Tex под мягкие кошки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Трекинговые носки, 3–4 пары</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Тонкие шерстяные носки под высотные ботинки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Тёплые носки для сна, пуховые ботиночки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Гамаши</span></label></li>
+</ul></details>
+<details class="gd"><summary><span class="gd-h">Рюкзак и сон</span><span class="gd-n">5</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Рюкзак 30–40 л и дождевик на него</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Гермомешки и zip-пакеты</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Спальник −20…−30 °C (свой или аренда)</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Вкладыш в спальник</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Надувная подушка — по желанию</span></label></li>
+</ul></details>
+<details class="gd"><summary><span class="gd-h">Трекинг и электроника</span><span class="gd-n">5</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Трекинговые палки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Налобный фонарь и запасные батарейки</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Термос 1 л и бутылка для воды</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Power bank и зарядные кабели</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Универсальный переходник</span></label></li>
+</ul></details>
+<details class="gd"><summary><span class="gd-h">Аптечка и гигиена</span><span class="gd-n">6</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Личные лекарства</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Пластыри от мозолей, эластичный бинт</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Обезболивающее, электролиты</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">SPF 50+, крем и бальзам для губ с SPF</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Влажные салфетки, полотенце из микрофибры</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Зубная щётка, паста, мыло, беруши</span></label></li>
+</ul></details>
+<details class="gd"><summary><span class="gd-h">Документы и деньги</span><span class="gd-n">3</span><span class="stg-i"></span></summary><ul class="chk">
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Паспорт и две копии</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Страховка с покрытием высотного альпинизма</span></label></li>
+<li><label><input type="checkbox"><span class="bx"></span><span class="tx">Наличные деньги</span></label></li>
+</ul></details>
+<div class="tips">
+<div class="tip"><b>Разносите ботинки</b><span>Новая обувь на высоте — главная причина мозолей. Походите в ней дома и на прогулках.</span></div>
+<div class="tip"><b>Проверьте страховку</b><span>Нужна с покрытием высотного альпинизма, обычная туристическая не подойдёт.</span></div>
+<div class="tip"><b>Соберите рюкзак дома</b><span>Пройдите по списку и взвесьте: так сразу видно, что лишнее.</span></div>
+<div class="tip"><b>Ночью — в спальник</b><span>Электронику и аккумуляторы кладите на ночь в спальник: на морозе заряд садится в разы быстрее.</span></div>
+</div>
+</div></section>
+
+<section class="faqs"><div class="wrap">
+<div class="tag"><span class="rule"></span><em>ВОПРОСЫ</em></div>
+<h2>ЧАСТЫЕ <span class="y">ВОПРОСЫ</span></h2>
+<details class="more"><summary><span class="mo-h"><span>Я не был на 6 000 м. Мне подойдёт?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Да, если вы уже бывали на 4 000–5 000 м. Главное — плавная акклиматизация. Мера-Пик — трекинговая вершина без вертикальных стен, нужно уметь ходить в высотных ботинках с кошками, и этому мы учим на техдне.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Нужен ли опыт восхождений?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Нужен опыт длительных переходов. Базовые навыки в кошках и со связкой повторяем на техдне в Кхаре.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Как подготовиться?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>1–2 месяца активных тренировок на выносливость. Подробный план отправим лично.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Нужно ли покупать снаряжение?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Техническое снаряжение выдаём. Высотный пуховик, штаны и спальник — свои или аренда в Катманду. Можно купить личное, чтобы использовать в следующих восхождениях. Не уверены в модели или размере — напишите, поможем подобрать.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Сколько вещей можно взять?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>До 15–20 кг на человека: один портер несёт вещи двоих участников. Баулы выдаём.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Что со связью?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Мобильная связь есть не на всём маршруте. Wi-Fi и зарядка в некоторых лоджах платные и не гарантированы.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>А если будет плохая погода?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Для этого есть запасной день. Решение о развороте до вершины принимает руководитель — участие не гарантирует достижения вершины.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Как работает вертолёт?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>По желанию, оплачивается по факту, стоимость обсуждаем заранее. Полёт зависит от погоды.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Какая нужна страховка?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>С покрытием высотного альпинизма до 6 500 м и вертолётной эвакуации. Обычная туристическая не подойдёт.</p></div></div></details>
+<details class="more"><summary><span class="mo-h"><span>Как забронировать и оплатить?</span></span><span class="stg-i"></span></summary><div class="mo-b one"><div class="mo-t"><p>Оставьте заявку на сайте или напишите нам и внесите предоплату 30% для бронирования места.</p></div></div></details>
+</div></section>
+
+
+
+<section class="gallery"><div class="wrap">
+<div class="tag"><span class="rule"></span><em>ГАЛЕРЕЯ</em></div>
+<div class="gal">
+<figure class="gal-i"><img src="img/pano1.jpg" alt="Селфи на фоне Эвереста" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/hosts.jpg" alt="С хозяйкой лоджа" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/milky.jpg" alt="Млечный путь" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/gompa.jpg" alt="Гомпа под скалой" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/klodge.jpg" alt="Лодж у водопада" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/crev.jpg" alt="Ледник Меры" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/tents.jpg" alt="Палатки в снегу" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/lukla.jpg" alt="Лукла" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/valley.jpg" alt="Долина Хинку сверху" loading="lazy"></figure>
+<figure class="gal-i"><img src="img/river2.jpg" alt="Горная река" loading="lazy"></figure>
+</div></div></section>
+
+<section class="fin"><img src="img/pano2.jpg" alt="" loading="lazy"><div class="sc"></div><div class="wrap">
+<h2><span class="huge">6 476 М</span>ГОТОВ ЗАЙТИ НА СВОЙ <span class="y">ПЕРВЫЙ ШЕСТИТЫСЯЧНИК?</span></h2>
+<p class="lead">И встретить рассвет над Гималаями с высоты 6 476 метров. Напиши нам «МЕРА» — пришлём программу и ответим на все вопросы.</p>
+<a class="cta" href="https://t.me/Hanryy1" target="_blank" rel="noopener">Занять место</a>
+<div class="sign">ТЕПЛО ЗЕМЛИ · TELEGRAM @HANRYY1 · TEPLOZEMLY.TAPLINK.WS</div>
+</div></section>
+
+<script data-tz>
+(function(){
+  var root=document.documentElement, KEY='tz-theme-v2', sw=document.getElementById('themeSw');
+  root.classList.add('js');
+  function apply(dark){ if(dark) root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme'); }
+  try{ if(localStorage.getItem(KEY)==='dark'){ sw.checked=true; apply(true); } }catch(e){}
+  sw.addEventListener('change',function(){ apply(sw.checked); try{ localStorage.setItem(KEY, sw.checked?'dark':'light'); }catch(e){} });
+
+  /* все дни */
+  var btn=document.getElementById('allDays'), days=[].slice.call(document.querySelectorAll('details.stg'));
+  function sync(){ var all=days.every(function(d){return d.open}); btn.textContent=all?'Свернуть дни':'Открыть все дни'; }
+  if(btn){ btn.addEventListener('click',function(){ var all=days.every(function(d){return d.open}); days.forEach(function(d,i){ d.open=all?(i===0):true; }); sync(); }); days.forEach(function(d){ d.addEventListener('toggle',sync); }); }
+
+  var reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches, EDIT=location.hash==='#edit';
+
+  /* карусель: точки, активный кадр, мягкая автопрокрутка */
+  var car=document.getElementById('car'), dotsBox=document.getElementById('carDots');
+  if(car){
+    var items=[].slice.call(car.querySelectorAll('.car-i')), dots=items.map(function(_,i){ var d=document.createElement('i'); dotsBox.appendChild(d); return d; });
+    var cur=-1;
+    function active(){ var c=car.scrollLeft+car.clientWidth/2, best=0, bd=1e9;
+      items.forEach(function(it,i){ var m=it.offsetLeft+it.offsetWidth/2, d=Math.abs(m-c); if(d<bd){bd=d;best=i;} });
+      if(best!==cur){ cur=best; items.forEach(function(it,i){ it.classList.toggle('on',i===best); dots[i].classList.toggle('on',i===best); }); } }
+    car.addEventListener('scroll',function(){ window.requestAnimationFrame(active); },{passive:true});
+    active();
+    var touched=false, visible=false;
+    ['pointerdown','touchstart','wheel'].forEach(function(ev){ car.addEventListener(ev,function(){ touched=true; },{passive:true}); });
+    if('IntersectionObserver' in window){ new IntersectionObserver(function(es){ visible=es[0].isIntersecting; },{threshold:.5}).observe(car); }
+    if(!reduce&&!EDIT) setInterval(function(){ if(touched||!visible) return; var n=(cur+1)%items.length, it=items[n];
+      car.scrollTo({left:it.offsetLeft-(car.clientWidth-it.offsetWidth)/2,behavior:'smooth'}); },3800);
+  }
+
+  /* ленты фото внутри дней */
+  [].forEach.call(document.querySelectorAll('.dnav'),function(nav){
+    var strip=nav.previousElementSibling; if(!strip||!strip.classList.contains('dcar')) return;
+    var b=nav.querySelectorAll('button');
+    function step(dir){ var it=strip.querySelector('.dc-i'); var w=it?it.getBoundingClientRect().width+10:300; strip.scrollBy({left:dir*w,behavior:reduce?'auto':'smooth'}); }
+    b[0].addEventListener('click',function(){ step(-1); }); b[1].addEventListener('click',function(){ step(1); });
+    strip.tabIndex=0; strip.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){ e.preventDefault(); step(1); } if(e.key==='ArrowLeft'){ e.preventDefault(); step(-1); } });
+  });
+
+  /* появление блоков */
+  var rvs=[].slice.call(document.querySelectorAll('.rv'));
+  if('IntersectionObserver' in window && !reduce && !EDIT){
+    var io=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } }); },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    rvs.forEach(function(el){ io.observe(el); });
+  } else rvs.forEach(function(el){ el.classList.add('in'); });
+
+  /* цифры набегают */
+  var nums=[].slice.call(document.querySelectorAll('.ft b'));
+  function countUp(el){ var m=el.textContent.match(/^(\D*)(\d+)(.*)$/); if(!m) return; var a=m[1], n=+m[2], z=m[3], t0=null, D=1100;
+    function f(t){ if(!t0) t0=t; var k=Math.min(1,(t-t0)/D), e=1-Math.pow(1-k,3); el.textContent=a+Math.round(n*e)+z; if(k<1) requestAnimationFrame(f); }
+    requestAnimationFrame(f); }
+  if('IntersectionObserver' in window && !reduce && !EDIT){
+    var io2=new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ countUp(e.target); io2.unobserve(e.target); } }); },{threshold:.6});
+    nums.forEach(function(el){ if(/^\d+$/.test(el.textContent)) io2.observe(el); });
+  }
+
+
+  /* видео: играют, только когда на экране */
+  var vids=[].slice.call(document.querySelectorAll('.vid video'));
+  vids.forEach(function(v){ v.muted=true; });
+  if('IntersectionObserver' in window){
+    var vio=new IntersectionObserver(function(es){ es.forEach(function(e){ var v=e.target; if(e.isIntersecting&&!reduce){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } else v.pause(); }); },{threshold:.35});
+    vids.forEach(function(v){ vio.observe(v); });
+  }
+  [].forEach.call(document.querySelectorAll('.vsnd'),function(b){ var v=b.parentNode.querySelector('video');
+    b.addEventListener('click',function(){ v.muted=!v.muted; if(!v.muted){ var p=v.play(); if(p&&p.catch) p.catch(function(){}); } b.textContent=v.muted?'🔇 Звук':'🔊 Звук'; b.setAttribute('aria-label',v.muted?'Включить звук':'Выключить звук'); }); });
+
+  /* линия, соединяющая точки «Путь к вершине» */
+  var pp=document.getElementById('ptPath'), pl=document.getElementById('ptLine');
+  function ptDraw(){ if(!pp) return; var r=pp.getBoundingClientRect(), ds=[].slice.call(pp.querySelectorAll('.pt-dot')).map(function(d){ var b=d.getBoundingClientRect(); return [b.left-r.left+b.width/2,b.top-r.top+b.height/2]; });
+    if(ds.length<2) return; var items=[].slice.call(pp.querySelectorAll('.pt')), d='M'+ds[0][0]+' '+ds[0][1];
+    for(var i=1;i<ds.length;i++){ var a=ds[i-1], b=ds[i], bot=items[i-1].getBoundingClientRect().bottom-r.top-30;
+      d+=' L'+a[0]+' '+bot+' C'+a[0]+' '+(bot+34)+' '+b[0]+' '+(b[1]-44)+' '+b[0]+' '+b[1]; }
+    pl.setAttribute('viewBox','0 0 '+r.width+' '+r.height); pl.querySelector('path').setAttribute('d',d); }
+  if(pp){ var pro=new ResizeObserver(ptDraw); pro.observe(pp); ptDraw(); }
+  /* чек-лист снаряжения: запоминаем отметки */
+  var GK='tz-gear-mera-v1', boxes=[].slice.call(document.querySelectorAll('.chk input')), cnt=document.getElementById('gCount'), saved={};
+  try{ saved=JSON.parse(localStorage.getItem(GK)||'{}')||{}; }catch(e){ saved={}; }
+  function upd(){ if(cnt) cnt.textContent=boxes.filter(function(b){return b.checked}).length+' из '+boxes.length; }
+  boxes.forEach(function(b,i){ if(saved[i]) b.checked=true; b.addEventListener('change',function(){ saved[i]=b.checked; try{ localStorage.setItem(GK,JSON.stringify(saved)); }catch(e){} upd(); }); });
+  upd();
+})();
+</script>
+<script data-tz>
+/* Встроенный редактор.
+   В Claude: кнопка «✎ Редактировать» для владельца, «Сохранить» пишет правки в саму страницу.
+   На любом другом сайте: допиши #edit к адресу, сохранение — через «Скачать HTML». */
+(function(){
+  var ROOT=document.documentElement, ON=false, cur=null, dirty=false, readOnly=false;
+  var state={v:1,t:{},i:{}}, pending={}, AF=null, DL=null, CAN=false;
+  var PT=(function(){ var d=document.createElement('div'); try{ d.contentEditable='plaintext-only'; }catch(e){} return d.contentEditable==='plaintext-only'; })();
+  var SKIP='title,script,style,svg,img,input,button,select,textarea,label.theme,.ed-ui,.car-dots,.stg-i,.bx,.m3,.m3-days,.prof';
+  var hasClaude=!!(window.claude&&window.claude.use);
+
+  /* ---------- ключи элементов: порядок на странице постоянный */
+  function collect(){
+    var n=0, all=document.body.querySelectorAll('*');
+    for(var i=0;i<all.length;i++){ var el=all[i];
+      if(el.closest(SKIP)) continue;
+      if(el.parentElement&&el.parentElement.closest('[data-tzk]')) continue;
+      var direct=false; for(var c=el.firstChild;c;c=c.nextSibling){ if(c.nodeType===3&&c.nodeValue.trim()){ direct=true; break; } }
+      if(direct) el.setAttribute('data-tzk','t'+(n++));
+    }
+    var m=0; [].forEach.call(document.querySelectorAll('img'),function(img){ if(!img.closest('.ed-ui')) img.setAttribute('data-tzi','i'+(m++)); });
+  }
+  function T(k){ return document.querySelector('[data-tzk="'+k+'"]'); }
+  function I(k){ return document.querySelector('[data-tzi="'+k+'"]'); }
+  function hBox(img){ var p=img.parentElement; if(!p) return null; if(p.classList.contains('ph-w')) return p; if(p.classList.contains('blk-img')) return img; return null; }
+  function applyImg(img,r){
+    if(r.src) img.src=r.src;
+    if(r.x!=null){ img.style.objectPosition=r.x+'% '+r.y+'%'; img.style.transformOrigin=r.x+'% '+r.y+'%'; }
+    var z=r.z||100; img.dataset.z=z; img.style.transform=z>100?'scale('+(z/100)+')':'';
+    if(r.h){ var hb=hBox(img); if(hb){ hb.style.height=r.h+'px'; hb.style.aspectRatio='auto'; } }
+  }
+  function applyAll(d){
+    if(!d) return; d.t=d.t||{}; d.i=d.i||{};
+    Object.keys(d.t).forEach(function(k){ var el=T(k); if(el) el.innerHTML=d.t[k]; });
+    Object.keys(d.i).forEach(function(k){ var img=I(k); if(img) applyImg(img,d.i[k]); });
+    state=d;
+  }
+
+  /* ---------- загрузка правок: встроенный блок, затем файл edits.json (если есть) */
+  collect();
+  try{ var inl=JSON.parse(document.getElementById('tz-edits').textContent||'{}'); applyAll(inl); }catch(e){}
+  ROOT.classList.add('tz-wait');
+  var released=false; function release(){ if(!released){ released=true; ROOT.classList.remove('tz-wait'); } }
+  setTimeout(release,1500);
+  if(location.protocol!=='file:'){
+    fetch('edits.json',{cache:'no-store'}).then(function(r){ return r.ok?r.json():null; }).then(function(d){
+      if(d){ var base=state; Object.keys(base.t||{}).forEach(function(k){ if(!(k in d.t)) d.t[k]=base.t[k]; }); Object.keys(base.i||{}).forEach(function(k){ if(!(k in d.i)) d.i[k]=base.i[k]; }); applyAll(d); }
+      release();
+    }).catch(release);
+  } else release();
+
+  /* ---------- интерфейс */
+  function toast(t){ var o=document.querySelector('.ed-toast'); if(!o){ o=document.createElement('div'); o.className='ed-ui ed-toast'; document.body.appendChild(o); } o.textContent=t; o.hidden=false; clearTimeout(o._t); o._t=setTimeout(function(){ o.hidden=true; },3400); }
+  function status(t){ var st=document.getElementById('edSt'); if(st) st.textContent=t; }
+  function setDirty(v){ dirty=v; var b=document.querySelector('#edBar [data-a="save"]'); if(b){ b.disabled=!v||readOnly; b.textContent=v?'Сохранить':'Сохранено'; } }
+  function fab(){
+    if(document.getElementById('edFab')) return;
+    var b=document.createElement('button'); b.type='button'; b.id='edFab'; b.className='ed-ui ed-fab'; b.textContent='✎ Редактировать';
+    b.addEventListener('click',start); document.body.appendChild(b);
+  }
+  function bar(){
+    var old=document.getElementById('edBar'); if(old) return;
+    var el=document.createElement('div'); el.id='edBar'; el.className='ed-ui ed-bar';
+    el.innerHTML='<b>✎ Редактор</b>'+(AF?'<button type="button" data-a="save" disabled>Сохранено</button>':'')+
+      '<button type="button" class="yb" data-a="y">● Жёлтым</button><button type="button" class="gh" data-a="ny">Убрать жёлтый</button><button type="button" class="gh" data-a="html">Скачать HTML</button><button type="button" class="gh" data-a="exit">Готово</button>'+
+      '<span class="ed-st" id="edSt">Нажми на текст, чтобы изменить. Выдели слова и нажми «● Жёлтым». На фото — кнопка «📷 Фото».</span>';
+    document.body.appendChild(el);
+    el.addEventListener('click',function(e){ var a=e.target.closest('[data-a]'); if(!a) return;
+      if(a.dataset.a==='save') save();
+      if(a.dataset.a==='html') exportHTML();
+      if(a.dataset.a==='exit') stop();
+      if(a.dataset.a==='y') paintY();
+      if(a.dataset.a==='ny') unpaintY();
+    });
+    el.addEventListener('mousedown',function(e){ if(e.target.closest('[data-a="y"],[data-a="ny"]')) e.preventDefault(); });
+  }
+  function panel(){
+    if(document.getElementById('edPanel')) return;
+    var pn=document.createElement('div'); pn.id='edPanel'; pn.className='ed-ui ed-panel'; pn.hidden=true;
+    pn.innerHTML='<div class="ed-ph"><b>Фото</b><button type="button" class="gh" data-a="close">Готово</button></div>'+
+      '<button type="button" data-a="replace" style="width:100%">Заменить фото</button>'+
+      '<label class="ed-row">Масштаб<input type="range" min="100" max="250" step="1" data-k="z"><output></output></label>'+
+      '<label class="ed-row">По горизонтали<input type="range" min="0" max="100" step="1" data-k="x"><output></output></label>'+
+      '<label class="ed-row">По вертикали<input type="range" min="0" max="100" step="1" data-k="y"><output></output></label>'+
+      '<label class="ed-row" id="edH">Высота кадра<input type="range" min="160" max="760" step="10" data-k="h"><output></output></label>'+
+      '<div class="ed-btns"><button type="button" class="gh" data-a="rst">Вернуть как было</button></div>';
+    document.body.appendChild(pn);
+    var f=document.createElement('input'); f.type='file'; f.accept='image/*'; f.id='edFile'; f.className='ed-ui'; f.hidden=true; document.body.appendChild(f);
+    f.addEventListener('change',function(){ var file=f.files&&f.files[0]; f.value=''; if(!file||!cur) return; var img=cur;
+      readImg(file,function(url,blob){ var k=img.getAttribute('data-tzi'), r=rec(k);
+        img.src=url; img.removeAttribute('srcset');
+        if(AF){ var path='u/'+k+'-'+Date.now().toString(36)+'.jpg'; pending[path]={blob:blob,url:url}; r.src=path; } else r.src=url;
+        setDirty(true); toast('Фото заменено'); });
+    });
+    pn.addEventListener('click',function(e){ var a=e.target.closest('[data-a]'); if(!a) return;
+      if(a.dataset.a==='close'){ pn.hidden=true; cur=null; }
+      if(a.dataset.a==='replace') f.click();
+      if(a.dataset.a==='rst'&&cur){ var k=cur.getAttribute('data-tzi'); var orig=cur.getAttribute('data-orig'); if(orig) cur.src=orig;
+        cur.style.objectPosition=''; cur.style.transform=''; cur.style.transformOrigin=''; delete cur.dataset.z; var hb=hBox(cur); if(hb){ hb.style.height=''; hb.style.aspectRatio=''; }
+        delete state.i[k]; setDirty(true); openPanel(cur); }
+    });
+    pn.addEventListener('input',function(e){ var k=e.target.dataset.k; if(!k||!cur) return; var v=+e.target.value;
+      e.target.nextElementSibling.textContent=k==='h'?v+' px':v+'%';
+      var r=rec(cur.getAttribute('data-tzi')), xy=pos(cur);
+      if(r.x==null){ r.x=xy[0]; r.y=xy[1]; }
+      if(k==='x') r.x=v; if(k==='y') r.y=v; if(k==='z') r.z=v; if(k==='h') r.h=v;
+      applyImg(cur,{x:r.x,y:r.y,z:r.z,h:k==='h'?v:null}); setDirty(true);
+    });
+  }
+  function rec(k){ return state.i[k]||(state.i[k]={}); }
+  function pos(img){ var op=(img.style.objectPosition||getComputedStyle(img).objectPosition||'50% 50%').split(' '); function pc(v){ var n=parseFloat(v); return isNaN(n)||v.indexOf('%')<0?50:n; } return [pc(op[0]),pc(op[1]||'50%')]; }
+  function openPanel(img){
+    cur=img; if(!img.getAttribute('data-orig')) img.setAttribute('data-orig',img.getAttribute('src'));
+    var pn=document.getElementById('edPanel'); pn.hidden=false;
+    var xy=pos(img), hb=hBox(img), vals={z:+(img.dataset.z||100),x:xy[0],y:xy[1],h:hb?Math.round(hb.getBoundingClientRect().height):0};
+    [].forEach.call(pn.querySelectorAll('input[data-k]'),function(r){ var k=r.dataset.k; r.value=vals[k]; r.nextElementSibling.textContent=k==='h'?vals[k]+' px':vals[k]+'%'; });
+    document.getElementById('edH').hidden=!hb;
+  }
+  function readImg(file,cb){
+    var rd=new FileReader(); rd.onload=function(){ var im=new Image(); im.onload=function(){ var M=1600, k=Math.min(1,M/Math.max(im.width,im.height)), c=document.createElement('canvas'); c.width=Math.round(im.width*k); c.height=Math.round(im.height*k); c.getContext('2d').drawImage(im,0,0,c.width,c.height); var url=c.toDataURL('image/jpeg',.82); c.toBlob(function(b){ cb(url,b); },'image/jpeg',.82); }; im.onerror=function(){ toast('Не получилось открыть это фото'); }; im.src=rd.result; }; rd.readAsDataURL(file);
+  }
+  function chips(){
+    [].forEach.call(document.querySelectorAll('img[data-tzi]'),function(img){ var host=img.parentElement;
+      if(getComputedStyle(host).position==='static') host.classList.add('ed-rel');
+      if(host.querySelector(':scope > .ed-chip')) return;
+      var b=document.createElement('button'); b.type='button'; b.className='ed-ui ed-chip'; b.textContent='📷 Фото';
+      b.addEventListener('click',function(e){ e.preventDefault(); e.stopPropagation(); openPanel(img); }); host.appendChild(b); });
+  }
+
+  /* ---------- режим редактирования */
+  function start(){
+    if(ON) return; ON=true; ROOT.classList.add('edit-on');
+    var f=document.getElementById('edFab'); if(f) f.hidden=true;
+    [].forEach.call(document.querySelectorAll('.rv'),function(e){ e.classList.add('in'); });
+    [].forEach.call(document.querySelectorAll('[data-tzk]'),function(el){ el.setAttribute('contenteditable',PT?'plaintext-only':'true'); el.setAttribute('spellcheck','false'); el.setAttribute('data-ed',''); });
+    chips(); panel(); bar(); setDirty(dirty);
+    if(!AF) status('Правки останутся в этом окне. Чтобы сохранить — «Скачать HTML».');
+  }
+  function stop(){
+    if(dirty&&AF&&!readOnly){ status('Есть несохранённые правки — нажми «Сохранить».'); toast('Сначала сохрани правки'); return; }
+    ON=false; ROOT.classList.remove('edit-on');
+    [].forEach.call(document.querySelectorAll('[data-ed]'),function(el){ el.removeAttribute('contenteditable'); el.removeAttribute('spellcheck'); el.removeAttribute('data-ed'); });
+    [].forEach.call(document.querySelectorAll('.ed-chip,#edBar,#edPanel,.ed-hl'),function(e){ e.parentNode.removeChild(e); });
+    var f=document.getElementById('edFab'); if(f) f.hidden=false;
+  }
+
+  /* ---------- сохранение прямо в страницу (Claude) */
+  function save(){
+    if(!AF||readOnly||!dirty) return;
+    var b=document.querySelector('#edBar [data-a="save"]'); if(b){ b.disabled=true; b.textContent='Сохраняю…'; }
+    var files={'edits.json':JSON.stringify(state)};
+    Object.keys(pending).forEach(function(p){ files[p]=pending[p].blob; });
+    try{ sessionStorage.setItem('tz-unsaved',JSON.stringify(state)); }catch(e){}
+    AF.publish(files).then(function(){ pending={}; setDirty(false); try{ sessionStorage.removeItem('tz-unsaved'); }catch(e){} toast('Сохранено ✓'); status('Сохранено. Все, у кого есть ссылка, видят новую версию.'); })
+      .catch(function(err){ var c=err&&err.code;
+        if(c==='capability_disabled'||c==='invalid_content'||c==='read_only_path') return saveWhole();
+        if(c==='conflict'){ status('Страница обновилась с другого устройства — перезагружаю.'); return; }
+        if(c==='not_writer'||c==='not_granted'||c==='not_declared'){ readOnly=true; setDirty(dirty); status('Эта страница открыта только для просмотра — сохранить здесь нельзя.'); return; }
+        if(c==='rate_limited'){ setDirty(true); status('Слишком часто — подожди немного и нажми «Сохранить» ещё раз.'); return; }
+        if(c==='too_large'){ setDirty(true); status('Слишком большой объём фото — замени фото на более лёгкие.'); return; }
+        setDirty(true); status('Не получилось сохранить. Попробуй ещё раз через минуту.');
+      });
+  }
+  /* запасной путь: целая страница с правками во встроенном блоке */
+  function saveWhole(){
+    var inl=JSON.parse(JSON.stringify(state));
+    Object.keys(inl.i).forEach(function(k){ var s=inl.i[k].src; if(s&&pending[s]) inl.i[k].src=pending[s].url; });
+    fetch(location.href,{cache:'no-store'}).then(function(r){ return r.text(); }).then(function(src){
+      if(!/^\s*<!doctype html/i.test(src)) throw {code:'invalid_content'};
+      var a=src.indexOf('<script type="application/json" id="tz-edits" data-tz>'), b=src.indexOf('<\/script>',a);
+      if(a<0||b<0) throw {code:'invalid_content'};
+      var json=JSON.stringify(inl).replace(/</g,'\\u003c');
+      return AF.publish(src.slice(0,a)+'<script type="application/json" id="tz-edits" data-tz>'+json+src.slice(b));
+    }).then(function(){ pending={}; setDirty(false); toast('Сохранено ✓'); })
+      .catch(function(){ setDirty(true); status('Сохранить в странице не получилось — нажми «Скачать HTML», чтобы не потерять правки.'); });
+  }
+
+  /* ---------- файл для другого сайта (Netlify) */
+  function toData(img){
+    var s=img.getAttribute('src')||''; if(!s||s.indexOf('data:')===0) return Promise.resolve();
+    return fetch(img.src).then(function(r){ return r.blob(); }).then(function(b){ return new Promise(function(res){ var fr=new FileReader(); fr.onload=function(){ img.setAttribute('src',fr.result); res(); }; fr.readAsDataURL(b); }); }).catch(function(){});
+  }
+  function cleanRoot(){
+    var r=ROOT.cloneNode(true);
+    ['js','edit-on','tz-wait'].forEach(function(c){ r.classList.remove(c); }); if(!r.getAttribute('class')) r.removeAttribute('class'); r.removeAttribute('data-theme');
+    [].forEach.call(r.querySelectorAll('script:not([data-tz])'),function(e){ e.parentNode.removeChild(e); });
+    [].forEach.call(r.querySelectorAll('.ed-ui'),function(e){ e.parentNode.removeChild(e); });
+    [].forEach.call(r.querySelectorAll('[data-ed],[data-tzk],[data-tzi],[data-orig]'),function(e){ ['data-ed','contenteditable','spellcheck','data-tzk','data-tzi','data-orig'].forEach(function(a){ e.removeAttribute(a); }); });
+    [].forEach.call(r.querySelectorAll('.ed-rel'),function(e){ e.classList.remove('ed-rel'); if(!e.getAttribute('class')) e.removeAttribute('class'); });
+    [].forEach.call(r.querySelectorAll('.rv'),function(e){ e.classList.remove('in'); });
+    [].forEach.call(r.querySelectorAll('.car-i'),function(e){ e.classList.remove('on'); });
+    var cd=r.querySelector('#carDots'); if(cd) cd.innerHTML='';
+    var gc=r.querySelector('#gCount'); if(gc) gc.textContent='0';
+    var ml=r.querySelector('#m3lab'); if(ml) ml.innerHTML='';
+    var md=r.querySelector('#m3d'); if(md) md.innerHTML='';
+    var ps=r.querySelector('#profSvg'); if(ps) ps.innerHTML='';
+    [].forEach.call(r.querySelectorAll('details.stg,details.gd'),function(d){ var first=d.parentNode.querySelector(d.classList.contains('stg')?'details.stg':'details.gd')===d; if(first&&d.classList.contains('stg')) d.setAttribute('open',''); else d.removeAttribute('open'); });
+    [].forEach.call(r.querySelectorAll('details.more,details.nin'),function(d){ d.removeAttribute('open'); });
+    var ad=r.querySelector('#allDays'); if(ad) ad.textContent='Открыть все дни';
+    var te=r.querySelector('#tz-edits'); if(te) te.textContent='{"v":1,"t":{},"i":{}}';
+    return r;
+  }
+  function exportHTML(){
+    status('Собираю файл…');
+    var r=cleanRoot(), imgs=[].slice.call(r.querySelectorAll('img'));
+    Promise.all(imgs.map(toData)).then(function(){
+      var html='<!DOCTYPE html>\n'+r.outerHTML, blob=new Blob([html],{type:'text/html'});
+      if(DL){ DL.save({filename:'index.html',data:blob}).then(function(){ status('Файл index.html готов — загрузи его на Netlify.'); }).catch(function(e){ status(e&&e.code==='declined'?'Скачивание отменено.':'Скачать файл здесь не получилось.'); }); return; }
+      var a=document.createElement('a'); a.href=URL.createObjectURL(blob); a.download='index.html'; a.className='ed-ui'; document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(a.href); a.parentNode.removeChild(a); },5000); status('Файл index.html скачан — загрузи его на Netlify.');
+    });
+  }
+
+  /* ---------- поведение страницы в режиме правки */
+  document.addEventListener('click',function(e){ if(!ON) return; var t=e.target; if(t.closest('.ed-ui')) return;
+    if(t.closest('a')) e.preventDefault();
+    if(t.closest('[data-ed]')&&(t.closest('summary')||t.closest('.chk label'))) e.preventDefault();
+    var img=t.closest('img[data-tzi]'); if(img){ e.preventDefault(); openPanel(img); }
+  },true);
+  document.addEventListener('keydown',function(e){ if(!ON) return; var ed=e.target.closest&&e.target.closest('[data-ed]'); if(ed&&ed.closest('summary')&&(e.key===' '||e.key==='Enter')){ e.preventDefault(); if(e.key===' ') document.execCommand('insertText',false,' '); } },true);
+  document.addEventListener('paste',function(e){ if(!ON||PT) return; var ed=e.target.closest&&e.target.closest('[data-ed]'); if(!ed) return; e.preventDefault(); document.execCommand('insertText',false,(e.clipboardData||window.clipboardData).getData('text')); });
+  document.addEventListener('input',function(e){ if(!ON) return; var el=e.target.closest&&e.target.closest('[data-tzk]'); if(!el) return; state.t[el.getAttribute('data-tzk')]=el.innerHTML; setDirty(true); });
+  window.addEventListener('beforeunload',function(e){ if(ON&&dirty&&!AF){ e.preventDefault(); e.returnValue=''; } });
+
+  /* ---------- выделение жёлтым */
+  var hl=null, lastRange=null, coarse=window.matchMedia&&matchMedia('(pointer:coarse)').matches;
+  function edOf(n){ var el=n&&(n.nodeType===1?n:n.parentElement); return el&&el.closest('[data-tzk]'); }
+  function unwrapY(sp){ var p=sp.parentNode; while(sp.firstChild) p.insertBefore(sp.firstChild,sp); p.removeChild(sp); }
+  function commitT(el){ state.t[el.getAttribute('data-tzk')]=el.innerHTML; setDirty(true); }
+  function hlBar(){
+    if(hl) return hl;
+    hl=document.createElement('div'); hl.className='ed-ui ed-hl'; hl.hidden=true;
+    hl.innerHTML='<button type="button" data-h="y">Жёлтым</button><button type="button" class="gh" data-h="n">Убрать</button>';
+    document.body.appendChild(hl);
+    function act(e){ var b=e.target.closest('[data-h]'); if(!b) return; e.preventDefault(); e.stopPropagation(); if(b.dataset.h==='y') paintY(); else unpaintY(); }
+    hl.addEventListener('mousedown',function(e){ e.preventDefault(); });
+    hl.addEventListener('touchstart',act,{passive:false});
+    hl.addEventListener('click',act);
+    return hl;
+  }
+  function placeHl(r){
+    var bar=hlBar(); bar.hidden=false; var rc=r.getBoundingClientRect();
+    var top=coarse?rc.bottom+14:rc.top-bar.offsetHeight-10;
+    if(top<70) top=rc.bottom+14; if(top>window.innerHeight-60) top=rc.top-bar.offsetHeight-10;
+    var left=Math.max(10,Math.min(window.innerWidth-bar.offsetWidth-10,rc.left+rc.width/2-bar.offsetWidth/2));
+    bar.style.top=top+'px'; bar.style.left=left+'px';
+  }
+  function onSel(){
+    if(!ON){ if(hl) hl.hidden=true; return; }
+    var sel=window.getSelection();
+    if(!sel||!sel.rangeCount||sel.isCollapsed){ if(hl) hl.hidden=true; return; }
+    var r=sel.getRangeAt(0), a=edOf(r.startContainer), b=edOf(r.endContainer);
+    if(!a||a!==b){ lastRange=null; if(hl) hl.hidden=true; return; }
+    lastRange=r.cloneRange(); placeHl(r);
+  }
+  document.addEventListener('selectionchange',onSel);
+  window.addEventListener('scroll',function(){ if(hl&&!hl.hidden&&lastRange) placeHl(lastRange); },{passive:true});
+  function paintY(){
+    var r=lastRange; if(!r){ toast('Сначала выдели слова в тексте'); return; } var el=edOf(r.commonAncestorContainer); if(!el){ toast('Выдели слова внутри одного абзаца'); return; }
+    var frag=r.extractContents();
+    [].slice.call(frag.querySelectorAll('span.y')).forEach(unwrapY);
+    var sp=document.createElement('span'); sp.className='y'; sp.appendChild(frag); r.insertNode(sp);
+    [].forEach.call(el.querySelectorAll('span.y'),function(s){ if(!s.textContent) s.parentNode.removeChild(s); });
+    var sel=window.getSelection(), nr=document.createRange(); nr.selectNodeContents(sp); sel.removeAllRanges(); sel.addRange(nr); lastRange=nr.cloneRange();
+    commitT(el); toast('Выделено жёлтым');
+  }
+  function unpaintY(){
+    var r=lastRange; if(!r){ toast('Сначала выдели слова в тексте'); return; } var el=edOf(r.commonAncestorContainer); if(!el){ toast('Выдели слова внутри одного абзаца'); return; }
+    var spans=[].filter.call(el.querySelectorAll('span.y'),function(s){ return r.intersectsNode(s); });
+    var c=r.commonAncestorContainer; c=(c.nodeType===1?c:c.parentElement).closest('span.y'); if(c&&spans.indexOf(c)<0) spans.push(c);
+    if(!spans.length){ toast('Здесь нет жёлтого'); return; }
+    spans.forEach(unwrapY); el.normalize(); commitT(el); if(hl) hl.hidden=true; toast('Жёлтый убран');
+  }
+
+  /* ---------- кто может редактировать */
+  if(hasClaude){
+    Promise.all([window.claude.use('artifact'),window.claude.use('user'),window.claude.use('downloads')]).then(function(r){
+      AF=r[0]; var U=r[1]; DL=r[2];
+      if(!AF||!U) return;
+      return U.canEdit().then(function(can){ CAN=can; if(can){ fab();
+        try{ var un=sessionStorage.getItem('tz-unsaved'); if(un){ sessionStorage.removeItem('tz-unsaved'); applyAll(JSON.parse(un)); dirty=true; start(); status('Вернул несохранённые правки — нажми «Сохранить».'); } }catch(e){}
+      } });
+    }).catch(function(){});
+  }
+  if(location.hash==='#edit') start();
+  window.addEventListener('hashchange',function(){ if(location.hash==='#edit') start(); });
+})();
+</script>
+<script>
+/* Объёмная схема маршрута: рельеф на canvas, подписи поверх, высотный профиль */
+{
+const stage=document.getElementById('m3s'), cv=document.getElementById('m3c'), lab=document.getElementById('m3lab');
+const chipsBox=document.getElementById('m3d'), profBox=document.getElementById('prof'), prof=document.getElementById('profSvg'), north=document.getElementById('m3n');
+const reduce=window.matchMedia&&matchMedia('(prefers-reduced-motion: reduce)').matches;
+if(stage&&cv&&cv.getContext){
+const ctx=cv.getContext('2d');
+const LON0=86.805, LAT0=27.668, KX=98.6, KY=111.2, EX=1.35;
+const xy=(lat,lon)=>[(lon-LON0)*KX,(lat-LAT0)*KY];
+const zOf=a=>(a-1500)/1000*EX;
+/* точки маршрута: Коте, Тхакнак, Кхаре и вершина — по опубликованным координатам, остальные примерно */
+const S={
+ lukla:{n:'Лукла',a:2860,ll:[27.6866,86.7298]}, paiya:{n:'Пайя',a:2730,ll:[27.638,86.741]}, pangom:{n:'Пангом',a:2850,ll:[27.593,86.753]},
+ ramailo:{n:'Рамайло-Данда',a:3270,ll:[27.597,86.781]}, chhatra:{n:'Чхатра-Кхола',a:3150,ll:[27.620,86.802]}, kothe:{n:'Коте',a:3600,ll:[27.6632,86.8136]},
+ thaknak:{n:'Тхакнак',a:4300,ll:[27.7326,86.8341]}, sabai:{n:'Сабай-Тшо',a:4450,ll:[27.741,86.852],sm:1}, khare:{n:'Кхаре',a:4900,ll:[27.7447,86.8782]},
+ camp:{n:'Штурмовой лагерь',a:5800,ll:[27.724,86.885]}, summit:{n:'Мера-Пик',a:6461,ll:[27.7092,86.8683],top:1},
+ thuli:{n:'Тхули-Кхарка',a:4250,ll:[27.668,86.788]}, zatrwa:{n:'Затрава-Ла',a:4600,ll:[27.672,86.765],sm:1}
+};
+Object.keys(S).forEach(k=>{ const s=S[k]; [s.x,s.y]=xy(s.ll[0],s.ll[1]); });
+const CP=Object.keys(S).map(k=>[S[k].x,S[k].y,S[k].a]);
+[[27.709,86.868,6476],[27.695,86.876,6065],[27.712,86.850,6255],[27.738,86.893,5415],[27.730,86.915,6648],[27.715,86.900,6100],[27.690,86.895,5700],
+ [27.772,86.842,6769],[27.765,86.860,6300],[27.775,86.880,5900],[27.752,86.900,5800],[27.752,86.800,6367],[27.735,86.805,5600],[27.715,86.800,5300],[27.695,86.800,4900],
+ [27.700,86.822,4800],[27.715,86.828,4500],[27.690,86.818,4100],[27.640,86.812,3300],[27.600,86.815,2800],[27.700,86.845,5000],[27.680,86.840,5200],[27.650,86.840,4700],[27.630,86.845,4200],[27.610,86.860,3900],
+ [27.690,86.772,5000],[27.655,86.770,4400],[27.635,86.768,3900],[27.615,86.770,3500],[27.700,86.755,4600],[27.720,86.770,5300],
+ [27.690,86.705,2450],[27.640,86.708,2250],[27.590,86.712,2000],[27.745,86.715,2950],[27.780,86.740,4300],[27.660,86.745,3300],[27.610,86.735,2500],
+ [27.575,86.780,2900],[27.575,86.830,3100],[27.590,86.800,3300],[27.575,86.880,3400],[27.640,86.900,4800],[27.600,86.910,4000],[27.780,86.800,5600],[27.780,86.910,6000],[27.570,86.705,1900]
+].forEach(p=>{ const q=xy(p[0],p[1]); CP.push([q[0],q[1],p[2]]); });
+const noise=(x,y)=>110*Math.sin(.9*x+.6*y)+80*Math.sin(1.3*y-1.1*x+1.3)+40*Math.sin(1.9*x+1.6*y+.7);
+function alt(x,y){ let sw=0,sa=0; for(const c of CP){ const dx=x-c[0], dy=y-c[1], d2=dx*dx+dy*dy; if(d2<1e-6) return c[2]; const w=1/Math.pow(d2+.08,1.6); sw+=w; sa+=w*c[2]; } return sa/sw+noise(x,y); }
+/* сетка рельефа */
+const X0=-10.4,X1=11.4,Y0=-10.9,Y1=12.6, N=64;
+const G=[]; for(let j=0;j<=N;j++){ const row=[]; for(let i=0;i<=N;i++){ const x=X0+(X1-X0)*i/N, y=Y0+(Y1-Y0)*j/N; const a=alt(x,y); row.push({x,y,a,z:zOf(a)}); } G.push(row); }
+const LX=-.55,LY=.55,LZ=.63, Ln=Math.hypot(LX,LY,LZ);
+const Q=[]; for(let j=0;j<N;j++) for(let i=0;i<N;i++){ const p=[G[j][i],G[j][i+1],G[j+1][i+1],G[j+1][i]];
+  const dx=(p[1].z+p[2].z-p[0].z-p[3].z)/2, dy=(p[3].z+p[2].z-p[0].z-p[1].z)/2, sx=(X1-X0)/N, sy=(Y1-Y0)/N;
+  const nx=-dx/sx, ny=-dy/sy, nz=1, nl=Math.hypot(nx,ny,nz); const sh=Math.max(0,(nx*LX+ny*LY+nz*LZ)/(nl*Ln));
+  Q.push({p,a:(p[0].a+p[1].a+p[2].a+p[3].a)/4,sh}); }
+/* маршрут по поверхности */
+const seq=['lukla','paiya','pangom','ramailo','chhatra','kothe','thaknak','sabai','thaknak','khare','camp','summit','camp','khare','thaknak','kothe','thuli','zatrwa','lukla'];
+const R=[], nodeIdx=[];
+for(let s=0;s<seq.length-1;s++){ const a=S[seq[s]], b=S[seq[s+1]]; nodeIdx.push(R.length); const n=Math.max(8,Math.round(Math.hypot(b.x-a.x,b.y-a.y)*5));
+  for(let t=0;t<n;t++){ const u=t/n, x=a.x+(b.x-a.x)*u, y=a.y+(b.y-a.y)*u + Math.sin(u*Math.PI)*.35*((s%2)?1:-1); R.push({x,y,z:zOf(t===0?a.a:alt(x,y))+.06}); } }
+nodeIdx.push(R.length); R.push({x:S.lukla.x,y:S.lukla.y,z:zOf(S.lukla.a)+.06});
+const arc=(k)=>{ const a=S[k], b=S.lukla, pts=[]; for(let t=0;t<=30;t++){ const u=t/30; pts.push({x:a.x+(b.x-a.x)*u,y:a.y+(b.y-a.y)*u,z:zOf(a.a)+(zOf(b.a)-zOf(a.a))*u+Math.sin(u*Math.PI)*2.2}); } return pts; };
+const HELI=[arc('kothe'),arc('khare')];
+/* цвета */
+const dark=()=>document.documentElement.getAttribute('data-theme')==='dark'||(document.getElementById('themeSw')||{}).checked;
+const RAMP=[[1500,[168,166,118]],[2600,[150,156,104]],[3500,[163,150,112]],[4300,[156,145,128]],[4900,[170,166,160]],[5300,[232,231,226]],[6500,[250,249,246]]];
+function col(a,sh){ let c=RAMP[RAMP.length-1][1]; for(let i=1;i<RAMP.length;i++){ if(a<=RAMP[i][0]){ const [a0,c0]=RAMP[i-1],[a1,c1]=RAMP[i], u=Math.max(0,(a-a0)/(a1-a0)); c=c0.map((v,k)=>v+(c1[k]-v)*u); break; } }
+  const k=(dark()?.5:.62)+(dark()?.45:.5)*sh; return 'rgb('+c.map(v=>Math.min(255,Math.round(v*k))).join(',')+')'; }
+/* камера */
+let yaw=-.35, pitch=.82, tYaw=yaw, tPitch=pitch, W=0, H=0, DPR=1, sc=1, cx=0, cy=0;
+const RAD=12, ZM=zOf(6800);
+function fit(){ W=stage.clientWidth; const mob=W<600; H=Math.round(mob?Math.max(440,W*1.2):Math.min(620,Math.max(460,W*.62))); stage.style.setProperty('--mh',H+'px');
+  DPR=Math.min(2,window.devicePixelRatio||1); const lb0=document.getElementById('m3live'); if(lb0) lb0.style.height=Math.max(H,W<600?480:560)+'px'; cv.width=W*DPR; cv.height=H*DPR; ctx.setTransform(DPR,0,0,DPR,0,0); measure(); draw(); }
+const KS=Object.keys(S), MX=KS.reduce((a,k)=>a+S[k].x,0)/KS.length, MY=KS.reduce((a,k)=>a+S[k].y,0)/KS.length, RR=Math.max(...KS.map(k=>Math.hypot(S[k].x-MX,S[k].y-MY)))+.8;
+function proj(x,y,z){ x-=MX; y-=MY; const c=Math.cos(yaw), s=Math.sin(yaw); const xr=x*c-y*s, yr=x*s+y*c; const sp=Math.sin(pitch), cp=Math.cos(pitch);
+  return [cx+xr*sc, cy-(yr*sp+z*cp)*sc, yr*cp-z*sp]; }
+function cam(){ const sp=Math.sin(pitch), cp=Math.cos(pitch), up=RR*sp+ZM*cp, dn=RR*sp; const topPad=W<600?88:80;
+  sc=Math.min((W-(W<600?40:90))/(2*RR),(H-topPad-24)/(up+dn)); cx=W/2; cy=topPad+up*sc; }
+/* подписи */
+const LB={}; Object.keys(S).forEach(k=>{ const s=S[k], el=document.createElement('div'); el.className='lb'+(s.top?' top':''); el.textContent=s.n; const i=document.createElement('i'); i.textContent=s.a.toLocaleString('ru-RU')+' м'; el.appendChild(i); lab.appendChild(el); LB[k]={el,w:0,h:0}; });
+function measure(){ Object.keys(LB).forEach(k=>{ const l=LB[k]; l.el.hidden=false; l.w=l.el.offsetWidth; l.h=l.el.offsetHeight; }); }
+let hiKeys=['lukla'], wIdx=0;
+function draw(){
+  cam(); ctx.clearRect(0,0,W,H);
+  const PQ=Q.map(q=>{ const pp=q.p.map(v=>proj(v.x,v.y,v.z)); return {pp,d:(pp[0][2]+pp[1][2]+pp[2][2]+pp[3][2])/4,q}; });
+  PQ.sort((a,b)=>b.d-a.d);
+  for(const t of PQ){ const c=col(t.q.a,t.q.sh); ctx.fillStyle=c; ctx.strokeStyle=c; ctx.lineWidth=.6; ctx.beginPath(); ctx.moveTo(t.pp[0][0],t.pp[0][1]); for(let k=1;k<4;k++) ctx.lineTo(t.pp[k][0],t.pp[k][1]); ctx.closePath(); ctx.fill(); ctx.stroke(); }
+  const Y=getComputedStyle(document.documentElement).getPropertyValue('--y').trim()||'#A87700';
+  const INK=dark()?'rgba(255,255,255,.75)':'rgba(21,21,21,.6)';
+  /* вертолёт */
+  ctx.setLineDash([6,7]); ctx.lineWidth=1.6; ctx.strokeStyle=INK;
+  HELI.forEach(a=>{ ctx.beginPath(); a.forEach((p,i)=>{ const q=proj(p.x,p.y,p.z); i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]); }); ctx.stroke(); });
+  ctx.setLineDash([]);
+  /* маршрут: весь бледно, пройденный ярко */
+  const RP=R.map(p=>proj(p.x,p.y,p.z));
+  ctx.lineJoin='round'; ctx.lineCap='round';
+  ctx.strokeStyle='rgba(255,255,255,.55)'; ctx.lineWidth=6; ctx.beginPath(); RP.forEach((q,i)=>i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1])); ctx.stroke();
+  ctx.strokeStyle=Y; ctx.globalAlpha=.4; ctx.lineWidth=3; ctx.stroke(); ctx.globalAlpha=1;
+  if(wIdx>0){ ctx.lineWidth=4; ctx.beginPath(); for(let i=0;i<=wIdx;i++){ const q=RP[i]; i?ctx.lineTo(q[0],q[1]):ctx.moveTo(q[0],q[1]); } ctx.stroke(); }
+  /* подписи с отводами без наложений */
+  const keys=Object.keys(S).sort((a,b)=>(hiKeys.includes(b)-hiKeys.includes(a))||((S[b].top||0)-(S[a].top||0))||((S[a].sm||0)-(S[b].sm||0))||(S[b].a-S[a].a));
+  const placed=[], narrow=W<600; ctx.lineWidth=1.5;
+  keys.forEach(k=>{ const s=S[k], l=LB[k], hi=hiKeys.includes(k), p=proj(s.x,s.y,zOf(s.a));
+    const showI=!narrow||hi||s.top; l.el.querySelector('i').style.display=showI?'':'none';
+    const w=l.w, h=showI?l.h:Math.round(l.h*.58);
+    if(narrow&&s.sm&&!hi){ l.el.hidden=true; return; }
+    let ok=false, top=0;
+    for(let st=18;st<=18+3*28;st+=28){ top=p[1]-st; const r=[p[0]-w/2-3,top-h-3,p[0]+w/2+3,top+3];
+      if(r[0]<2||r[2]>W-2||r[1]<(narrow?70:58)) continue;
+      if(!placed.some(o=>!(r[2]<o[0]||r[0]>o[2]||r[3]<o[1]||r[1]>o[3]))){ placed.push(r); ok=true; break; } }
+    if(!ok&&hi){ top=p[1]-18; ok=true; }
+    l.el.hidden=!ok; l.el.classList.toggle('hi',hi);
+    if(!ok) return;
+    l.el.style.transform='translate('+(p[0]-w/2).toFixed(1)+'px,'+(top-h).toFixed(1)+'px)';
+    ctx.strokeStyle=hi?Y:INK; ctx.beginPath(); ctx.moveTo(p[0],p[1]); ctx.lineTo(p[0],top); ctx.stroke();
+    ctx.fillStyle=hi?Y:'#fff'; ctx.beginPath(); ctx.arc(p[0],p[1],hi?4.5:3,0,7); ctx.fill(); });
+  /* идущий */
+  const w=RP[wIdx]; ctx.fillStyle='#fff'; ctx.strokeStyle=Y; ctx.lineWidth=3; ctx.beginPath(); ctx.arc(w[0],w[1],7,0,7); ctx.fill(); ctx.stroke();
+  if(north) north.style.transform='rotate('+(yaw*180/Math.PI)+'deg)';
+}
+let raf=0; const req=()=>{ if(!raf) raf=requestAnimationFrame(()=>{ raf=0; draw(); }); };
+/* поворот */
+let drag=null, tw=0;
+stage.addEventListener('pointerdown',e=>{ if(e.button>0) return; cancelAnimationFrame(tw); drag={x:e.clientX,y:e.clientY,yaw,pitch,m:e.pointerType==='mouse'}; stage.classList.add('drag'); try{stage.setPointerCapture(e.pointerId);}catch(_){} });
+stage.addEventListener('pointermove',e=>{ if(!drag) return; yaw=drag.yaw+(e.clientX-drag.x)*.008; if(drag.m) pitch=Math.max(.35,Math.min(1.5,drag.pitch+(e.clientY-drag.y)*.005)); req(); });
+const end=()=>{ drag=null; stage.classList.remove('drag'); };
+stage.addEventListener('pointerup',end); stage.addEventListener('pointercancel',end);
+function tween(ty,tp){ cancelAnimationFrame(tw); const y0=yaw,p0=pitch,t0=performance.now(),D=reduce?1:900;
+  const f=t=>{ const k=Math.min(1,(t-t0)/D), e=1-Math.pow(1-k,3); yaw=y0+(ty-y0)*e; pitch=p0+(tp-p0)*e; draw(); if(k<1) tw=requestAnimationFrame(f); }; tw=requestAnimationFrame(f); }
+/* дни */
+const D=[
+ [1,'24.03','Катманду',['lukla'],0,1400,1400],[2,'25.03','Пайя',['paiya'],1,2730,2860],[3,'26.03','Пангом',['pangom'],2,2850,2850],
+ [4,'27.03','Рамайло-Данда',['ramailo'],3,3270,3270],[5,'28.03','Чхатра-Кхола',['chhatra'],4,3150,3270],[6,'29.03','Коте',['kothe'],5,3600,3600],
+ [7,'30.03','Тхакнак',['thaknak'],6,4300,4300],[8,'31.03','Сабай-Тшо',['sabai','thaknak'],8,4300,4450],[9,'01.04','Кхаре',['khare'],9,4900,4900],
+ [10,'02.04','Техдень',['khare'],9,4900,5300],[11,'03.04','Штурмовой лагерь',['camp'],10,5800,5800],[12,'04.04','Вершина',['summit','khare'],13,4900,6461],
+ [13,'05.04','Запасной день',['khare'],13,4900,4900],[14,'06.04','Коте',['kothe'],15,3600,4900],[15,'07.04','Тхули-Кхарка',['thuli'],16,4250,4250],
+ [16,'08.04','Затрава-Ла · Лукла',['zatrwa','lukla'],18,2840,4600],[17,'09.04','Катманду',['lukla'],18,1400,2840],[18,'10.04','Вылет',['lukla'],18,null,null]
+];
+let curDay=0, playing=false, wa=0, LIVE=null;
+const btns=D.map((d,i)=>{ const b=document.createElement('button'); b.type='button'; const it=document.createElement('i'); it.textContent='ДЕНЬ '+d[0]+' · '+d[1]; b.appendChild(it); b.appendChild(document.createTextNode(d[2]));
+  b.addEventListener('click',()=>{ playing=false; setPlay(false); select(i,true); }); chipsBox.appendChild(b); return b; });
+const moveW=(to,dur)=>new Promise(res=>{ cancelAnimationFrame(wa); const from=wIdx; if(reduce||!dur||from===to){ wIdx=to; draw(); return res(); }
+  const t0=performance.now(); const f=t=>{ const k=Math.min(1,(t-t0)/dur), e=k<.5?2*k*k:1-Math.pow(-2*k+2,2)/2; wIdx=Math.round(from+(to-from)*e); draw(); if(k<1) wa=requestAnimationFrame(f); else res(); }; wa=requestAnimationFrame(f); });
+function select(i,user){ curDay=i; const d=D[i]; hiKeys=d[3]; btns.forEach((b,j)=>b.classList.toggle('on',j===i));
+  const b=btns[i]; chipsBox.scrollTo({left:b.offsetLeft-chipsBox.clientWidth/2+b.offsetWidth/2,behavior:reduce?'auto':'smooth'}); drawProf();
+  if(LIVE) return LIVE.show(d,user);
+  const to=nodeIdx[d[4]]; return moveW(to,Math.min(2400,350+Math.abs(to-wIdx)*(user?9:11))); }
+const ctl=stage.parentNode.querySelector('.m3-ctl'), vb=[].slice.call(ctl.querySelectorAll('button'));
+const setPlay=on=>{ vb[2].textContent=on?'■ Стоп':'▶ Пройти маршрут'; vb[2].classList.toggle('on',on); };
+ctl.addEventListener('click',async e=>{ const b=e.target.closest('button'); if(!b) return; const v=b.dataset.v;
+  if(v==='3d'||v==='top'){ if(LIVE) LIVE.view(v); else tween(v==='3d'?-.35:0, v==='3d'?.82:1.5); vb[0].classList.toggle('on',v==='3d'); vb[1].classList.toggle('on',v==='top'); return; }
+  if(playing){ playing=false; setPlay(false); return; }
+  playing=true; setPlay(true); wIdx=0; if(LIVE) LIVE.reset();
+  for(let i=0;i<D.length&&playing;i++){ await select(i,false); await new Promise(r=>setTimeout(r,reduce?900:550)); }
+  playing=false; setPlay(false); });
+/* высотный профиль */
+function drawProf(){
+  const PW=prof.clientWidth, PH=prof.clientHeight; if(!PW) return;
+  const narrow=PW<520, padL=narrow?30:44, padR=8, padT=26, padB=26, n=D.length, cw=(PW-padL-padR)/n;
+  const y=a=>padT+(PH-padT-padB)*(1-(a-1000)/(7000-1000)); let s='';
+  [2000,4000,6000].forEach(a=>{ s+='<line class="gr" x1="'+padL+'" x2="'+(PW-padR)+'" y1="'+y(a)+'" y2="'+y(a)+'"/><text x="'+(padL-6)+'" y="'+(y(a)+4)+'" text-anchor="end">'+(narrow?a/1000+'к':a.toLocaleString('ru-RU'))+'</text>'; });
+  let line='';
+  D.forEach((d,i)=>{ const x=padL+i*cw;
+    if(d[6]) s+='<rect class="bar'+(i===curDay?' on':'')+'" data-i="'+i+'" x="'+(x+cw*.18)+'" y="'+y(d[6])+'" width="'+(cw*.64)+'" height="'+(PH-padB-y(d[6]))+'" rx="3"/>';
+    if(d[5]) line+=(line?'L':'M')+(x+cw/2).toFixed(1)+' '+y(d[5]).toFixed(1);
+    if(!narrow||i%2===0||i===curDay) s+='<text x="'+(x+cw/2)+'" y="'+(PH-8)+'" text-anchor="middle">'+d[0]+'</text>'; });
+  s+='<path class="ln" d="'+line+'"/>';
+  D.forEach((d,i)=>{ if(d[5]) s+='<circle class="dt" cx="'+(padL+i*cw+cw/2)+'" cy="'+y(d[5])+'" r="'+(i===curDay?5:3)+'"/>'; });
+  const c=D[curDay]; if(c[6]){ const tx=Math.max(padL+40,Math.min(PW-padR-40,padL+curDay*cw+cw/2)); s+='<text class="tp" x="'+tx+'" y="'+(y(c[6])-8)+'" text-anchor="middle">'+c[6].toLocaleString('ru-RU')+' м</text>'; }
+  prof.innerHTML=s; }
+prof.addEventListener('click',e=>{ const r=e.target.closest('rect[data-i]'); if(r){ playing=false; setPlay(false); select(+r.dataset.i,true); } });
+const ro=new ResizeObserver(()=>fit()); ro.observe(stage);
+const ro2=new ResizeObserver(drawProf); ro2.observe(profBox);
+const sw=document.getElementById('themeSw'); if(sw) sw.addEventListener('change',()=>setTimeout(draw,40));
+new MutationObserver(()=>draw()).observe(document.documentElement,{attributes:true,attributeFilter:['data-theme']});
+fit(); select(0,false);
+/* ---------- живая спутниковая 3D-карта (работает на опубликованном сайте, где разрешены внешние карты) ---------- */
+const DEM='https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png', SAT='https://server.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer/tile/{z}/{y}/{x}';
+const liveBox=document.getElementById('m3live'), liveNote=document.getElementById('m3note');
+function loadLib(){ return new Promise((res,rej)=>{ if(window.maplibregl) return res();
+  const l=document.createElement('link'); l.rel='stylesheet'; l.href='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.css'; document.head.appendChild(l);
+  const sc=document.createElement('script'); sc.src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'; sc.onload=()=>window.maplibregl?res():rej(); sc.onerror=rej; document.head.appendChild(sc); }); }
+async function probe(){ try{ const c=new AbortController(); const t=setTimeout(()=>c.abort(),4000);
+  const r=await fetch(DEM.replace('{z}','0').replace('{x}','0').replace('{y}','0'),{signal:c.signal,mode:'cors'}); clearTimeout(t); return r.ok; }catch(e){ return false; } }
+async function startLive(){
+  if(!liveBox||!(await probe())) return;
+  try{ await loadLib(); }catch(e){ return; }
+  const ML=window.maplibregl; const LL=k=>[S[k].ll[1],S[k].ll[0]];
+  const route=seq.map(LL);
+  const map=new ML.Map({container:liveBox, attributionControl:{compact:true}, cooperativeGestures:true, maxPitch:80,
+    center:[86.81,27.672], zoom:W<600?10.6:11.3, pitch:60, bearing:-25,
+    style:{version:8,
+      sources:{sat:{type:'raster',tiles:[SAT],tileSize:256,maxzoom:17,attribution:'Imagery © Esri, Maxar, Earthstar Geographics'},
+               dem:{type:'raster-dem',tiles:[DEM],encoding:'terrarium',tileSize:256,maxzoom:13,attribution:'Terrain: Mapzen / AWS Terrain Tiles'},
+               hsd:{type:'raster-dem',tiles:[DEM],encoding:'terrarium',tileSize:256,maxzoom:13}},
+      layers:[{id:'sat',type:'raster',source:'sat',paint:{'raster-saturation':-.05,'raster-contrast':.08}},{id:'hs',type:'hillshade',source:'hsd',paint:{'hillshade-exaggeration':.25,'hillshade-shadow-color':'#1b1b1b'}}],
+      terrain:{source:'dem',exaggeration:1.35}}});
+  map.addControl(new ML.NavigationControl({visualizePitch:true}),'bottom-right');
+  map.on('load',()=>{
+    map.addSource('rt',{type:'geojson',data:{type:'Feature',geometry:{type:'LineString',coordinates:route}}});
+    map.addSource('done',{type:'geojson',data:{type:'Feature',geometry:{type:'LineString',coordinates:[route[0],route[0]]}}});
+    map.addSource('heli',{type:'geojson',data:{type:'FeatureCollection',features:['kothe','khare'].map(k=>({type:'Feature',geometry:{type:'LineString',coordinates:[LL(k),LL('lukla')]}}))}});
+    map.addLayer({id:'heli',type:'line',source:'heli',paint:{'line-color':'#ffffff','line-width':2,'line-dasharray':[2,2],'line-opacity':.8}});
+    map.addLayer({id:'rt-case',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#ffffff','line-width':6,'line-opacity':.75}});
+    map.addLayer({id:'rt',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#F2C230','line-width':3.5,'line-opacity':.6}});
+    map.addLayer({id:'done',type:'line',source:'done',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#F2C230','line-width':5}});
+  });
+  const MK={}; Object.keys(S).forEach(k=>{ const el=document.createElement('div'); el.className='lb live'+(S[k].top?' top':''); el.textContent=S[k].n;
+    const i=document.createElement('i'); i.textContent=S[k].a.toLocaleString('ru-RU')+' м'; el.appendChild(i);
+    MK[k]=new ML.Marker({element:el,anchor:'bottom',offset:[0,-6]}).setLngLat(LL(k)).addTo(map); });
+  const dot=document.createElement('div'); dot.className='m3-walker'; const W8=new ML.Marker({element:dot}).setLngLat(route[0]).addTo(map);
+  let pos=0;
+  const doneTo=n=>{ const src=map.getSource('done'); if(src) src.setData({type:'Feature',geometry:{type:'LineString',coordinates:route.slice(0,Math.max(2,n+1))}}); };
+  LIVE={
+    show(d,user){ Object.keys(MK).forEach(k=>MK[k].getElement().classList.toggle('hi',d[3].includes(k)));
+      const n=d[4], k=d[3][0]; pos=n; W8.setLngLat(route[n]); doneTo(n);
+      return new Promise(r=>{ map.flyTo({center:LL(k),zoom:d[0]===1||d[0]>=17?11.6:13,pitch:62,bearing:-25+n*6,duration:reduce?0:(user?1800:2200),essential:true}); map.once('moveend',()=>r()); }); },
+    view(v){ map.easeTo(v==='top'?{pitch:0,bearing:0,zoom:W<600?10.6:11.3,center:[86.81,27.672],duration:1200}:{pitch:60,bearing:-25,duration:1200}); },
+    reset(){ doneTo(0); }
+  };
+  stage.hidden=true; liveBox.hidden=false; if(north) north.hidden=true;
+  const hint=stage.parentNode.querySelector('.m3-hint'); if(hint) hint.textContent='два пальца — повернуть и наклонить';
+  if(liveNote) liveNote.textContent='Спутниковая съёмка и рельеф — настоящие; линия маршрута проведена по точкам ночёвок и примерная.';
+  map.resize();
+}
+startLive();
+
+}
+}
+</script>
+</body></html>
