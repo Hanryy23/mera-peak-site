@@ -1364,7 +1364,7 @@ async function startLive(){
     map.addLayer({id:'rt-case',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#000','line-width':6,'line-opacity':.28,'line-blur':1.5}});
     map.addLayer({id:'rt',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'butt'},paint:{'line-color':'#F2C230','line-width':3,'line-dasharray':[2,1.6]}});
   });
-  const LAB={lukla:1,kothe:1,thaknak:1,khare:1,summit:1}, LEFT={summit:1,kothe:1};
+  const LAB={lukla:1,kothe:1,khare:1,summit:1}, LEFT={summit:1,kothe:1};
   const MK={}; Object.keys(S).forEach(k=>{ const el=document.createElement('div'); el.className='mk'+(LAB[k]?' lab':'')+(LEFT[k]?' l':'');
     const t=document.createElement('span'); t.className='t'; t.textContent=S[k].n; const i=document.createElement('i'); i.textContent=S[k].a.toLocaleString('ru-RU')+' м'; t.appendChild(i); el.appendChild(t);
     MK[k]=new ML.Marker({element:el,anchor:'center'}).setLngLat(LL(k)).addTo(map); });
