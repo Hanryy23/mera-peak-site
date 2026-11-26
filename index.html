@@ -2,7 +2,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>НЕПАЛ · Мера-Пик 6476 — Тепло Земли</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Montserrat:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600;700&family=Montserrat:wght@200;300;400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
 <style>
 /* VOICE: экспедиционный постер «Тепло Земли», тот же стиль, что у программ по Аннапурне
    IDEA: полевая карта восхождения — линия маршрута от Катманду до вершины
@@ -29,30 +29,57 @@ b,strong{font-weight:600}
 .tag .rule{width:42px;height:1px;background:var(--y)}
 .tag em{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-style:normal;font-size:12px;letter-spacing:.22em;color:var(--soft)}
 /* hero */
-.hero{position:relative;min-height:100vh;display:flex;align-items:center;overflow:hidden}
-.hero>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:50% 42%}
-.hero .sc{position:absolute;inset:0;background:linear-gradient(to left,rgba(6,6,6,.7),rgba(6,6,6,0) 60%),linear-gradient(to top,rgba(6,6,6,.94),rgba(6,6,6,.45) 45%,rgba(6,6,6,.12) 75%,rgba(6,6,6,.45))}
-.hero .wrap{position:relative;width:100%;display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;padding-top:120px;padding-bottom:80px}
-.route{width:300px;height:640px;overflow:visible}
-.route.rh{display:none}
-.route .rl{stroke-linecap:round;stroke-linejoin:round}
-.route .rl{fill:none;stroke:var(--y);stroke-width:3;vector-effect:non-scaling-stroke;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s .3s ease forwards}
-.route .nd{fill:var(--y)} .route .nd.hi{stroke:rgba(6,6,6,.6);stroke-width:3}
-.route text{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;letter-spacing:2px}
-.route .nm{font-size:20px;fill:#fff} .route .al{font-size:19px;fill:var(--y)}
-@keyframes draw{to{stroke-dashoffset:0}}
-.htxt{text-align:right}
-.kick{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.24em;color:var(--soft);margin:0 0 16px}
-h1{font-family:Oswald,"DejaVu Sans Condensed",sans-serif;font-weight:700;text-transform:uppercase;font-size:clamp(48px,8.5vw,116px);line-height:.98;margin:0}
-.dates{display:flex;flex-wrap:wrap;gap:10px;justify-content:flex-end;margin-top:24px}
-.dates .yr{font-family:"IBM Plex Mono",monospace;font-size:13px;letter-spacing:.2em;color:var(--fine);align-self:center;margin-right:4px}
-.dates span:not(.yr){font-family:"IBM Plex Mono",monospace;font-weight:500;font-size:clamp(13px,1.6vw,17px);letter-spacing:.14em;color:var(--y);border:1px solid rgba(242,194,48,.6);padding:9px 14px}
-.hprice{margin-top:20px;display:flex;align-items:baseline;gap:12px;justify-content:flex-end}
-.hprice b{font-family:Oswald,sans-serif;font-weight:700;font-size:clamp(40px,6vw,64px);line-height:1;color:var(--y)}
-.hprice span{font-family:"IBM Plex Mono",monospace;font-size:12px;letter-spacing:.16em;color:var(--soft);text-transform:uppercase}
-.hlede{margin:22px 0 0 auto;font-size:18px;color:var(--soft);max-width:560px}
-.cta{display:inline-block;margin-top:30px;font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:16px;color:#0B0B0C;background:var(--y);padding:16px 34px;text-decoration:none}
-.cta.ghost{background:transparent;color:var(--y);border:1px solid var(--y);margin-left:10px}
+.hero{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;overflow:hidden;background:#06101f;isolation:isolate}
+.hero-ph{position:absolute;inset:0;overflow:hidden}
+.hero-ph>img{width:100%;height:100%;object-fit:cover;object-position:50% 50%}
+.hero .sc{position:absolute;inset:0;pointer-events:none;background:radial-gradient(105% 80% at -4% 100%,rgba(3,9,20,.92),rgba(3,9,20,.5) 46%,rgba(3,9,20,0) 76%),linear-gradient(to left,rgba(4,10,22,.8),rgba(4,10,22,.28) 42%,rgba(4,10,22,0) 66%),linear-gradient(to top,rgba(4,10,20,.92) 0%,rgba(4,10,20,.6) 20%,rgba(4,10,20,.12) 48%,rgba(4,10,20,.06) 64%,rgba(4,10,20,.45) 100%)}
+.hero .gr{position:absolute;inset:0;pointer-events:none;background-image:var(--noise);opacity:.45;mix-blend-mode:overlay}
+/* трасса поверх фото */
+.trail{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;--sw:1px}
+.trail use{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.trail .t1{stroke:url(#tgd);stroke-width:calc(var(--sw)*7);opacity:.2}
+.trail .t2{stroke:url(#tgd);stroke-width:calc(var(--sw)*3.6);opacity:.42}
+.trail .t3{stroke:url(#tgw);stroke-width:calc(var(--sw)*4.2);opacity:.2}
+.trail .t4{stroke:url(#tgw);stroke-width:calc(var(--sw)*1.9)}
+.trail .dr{stroke-dasharray:1790;stroke-dashoffset:1790;animation:tdraw 3.2s .45s cubic-bezier(.32,0,.18,1) forwards}
+@keyframes tdraw{to{stroke-dashoffset:0}}
+.tpts{position:absolute;inset:0;pointer-events:none}
+.tpt,.tlb{position:absolute;opacity:0}
+.tpt{animation:tfade .8s 2s forwards}
+.tlb{animation:tfade 1s 2.9s forwards}
+@keyframes tfade{to{opacity:1}}
+.tpt{width:5px;height:5px;margin:-2.5px 0 0 -2.5px;border-radius:50%;background:#fff;box-shadow:0 0 0 3px rgba(255,255,255,.13),0 1px 6px rgba(0,8,20,.6)}
+.tpt.s{width:14px;height:14px;margin:-7px 0 0 -7px;background:transparent;border:1.5px solid rgba(255,255,255,.95);box-shadow:0 0 20px rgba(255,255,255,.4)}
+.tpt.s::before{content:"";position:absolute;inset:3.5px;border-radius:50%;background:#F2C230}
+.tpt.s::after{content:"";position:absolute;inset:-2px;border-radius:50%;border:1px solid rgba(255,255,255,.6);animation:tpul 3.4s 3.4s infinite}
+@keyframes tpul{0%{transform:scale(1);opacity:.75}70%{transform:scale(2.8);opacity:0}100%{transform:scale(2.8);opacity:0}}
+.tlb{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:clamp(9.5px,.78vw,11.5px);letter-spacing:.22em;text-transform:uppercase;color:rgba(255,255,255,.94);text-shadow:0 1px 12px rgba(0,8,20,.9),0 0 4px rgba(0,8,20,.8);white-space:nowrap;line-height:1.55}
+.tlb i{display:block;font-style:normal;color:#F2C230;letter-spacing:.2em}
+.tlb.r{transform:translate(-100%,-88%);padding-right:26px;text-align:right}
+.tlb.r::after{content:"";position:absolute;right:7px;bottom:5px;width:14px;height:1px;background:rgba(255,255,255,.55);transform:rotate(-18deg)}
+.tlb.b{margin:14px 0 0 16px}
+.tlb.b::after{content:"";position:absolute;left:-13px;top:-7px;width:11px;height:1px;background:rgba(255,255,255,.5);transform:rotate(38deg);transform-origin:right center}
+/* типографика обложки */
+.hero-ttl{flex:1 1 auto;min-width:0;pointer-events:none}
+.kick{display:flex;align-items:center;gap:13px;font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:clamp(9.5px,.85vw,12px);letter-spacing:.3em;color:rgba(255,255,255,.75);text-transform:uppercase;margin:0 0 clamp(14px,2vh,22px)}
+.kick::before{content:"";width:clamp(22px,3vw,40px);height:1px;background:#F2C230;flex:none}
+h1{font-family:Montserrat,"Helvetica Neue",Arial,sans-serif;font-weight:200;text-transform:uppercase;font-size:clamp(31px,6.4vw,88px);line-height:.96;letter-spacing:.13em;white-space:nowrap;margin:0;color:#fff;text-shadow:0 2px 46px rgba(0,8,22,.5)}
+.coord{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:clamp(9px,.82vw,11.5px);letter-spacing:.26em;color:rgba(255,255,255,.6);margin:clamp(14px,2vh,20px) 0 0;text-transform:uppercase}
+.hero-in{position:relative;z-index:4;width:100%;padding-bottom:clamp(34px,7vh,64px)}
+.hero-in .wrap{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(24px,4vw,64px)}
+.hero-txt{flex:0 0 auto;max-width:450px;text-align:right}
+@media(min-width:881px){.tpt.m0{display:none}.trail{-webkit-mask-image:linear-gradient(to right,transparent 0 19%,#000 35%);mask-image:linear-gradient(to right,transparent 0 19%,#000 35%)}}
+.hlede{font-size:clamp(15px,1.25vw,18px);line-height:1.6;color:rgba(255,255,255,.86);max-width:440px;margin:0 0 clamp(18px,3vh,26px)}
+.hmeta{display:flex;flex-wrap:wrap;justify-content:flex-end;align-items:baseline;gap:clamp(12px,2.2vw,30px);font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;font-size:clamp(10px,.95vw,12.5px);letter-spacing:.2em;color:rgba(255,255,255,.7);text-transform:uppercase;padding:clamp(12px,1.8vh,17px) 0;border-top:1px solid rgba(255,255,255,.2);border-bottom:1px solid rgba(255,255,255,.2);margin:clamp(18px,2.6vh,24px) 0 clamp(20px,3.2vh,30px);width:100%}
+.hmeta span{display:flex;align-items:baseline;gap:8px}
+.hmeta b{color:#F2C230;font-weight:500;font-size:clamp(12px,1.15vw,15px);letter-spacing:.12em}
+.hcta{display:flex;gap:12px;flex-wrap:wrap;justify-content:flex-end}
+.cta{display:inline-block;font-family:Oswald,sans-serif;font-weight:600;text-transform:uppercase;letter-spacing:.14em;font-size:clamp(13px,1.1vw,16px);color:#0B0B0C;background:var(--y);padding:15px 30px;text-decoration:none}
+.cta.ghost{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.45)}
+.price .cta,.fin .cta{margin-top:30px}
+.hero-sc{position:absolute;left:50%;bottom:0;width:1px;height:clamp(38px,7vh,76px);background:linear-gradient(rgba(255,255,255,0),rgba(255,255,255,.5));z-index:4}
+.hero-sc::after{content:"";position:absolute;left:-2px;top:0;width:5px;height:5px;border-radius:50%;background:#F2C230;animation:tdown 2.8s 3.4s infinite}
+@keyframes tdown{0%{transform:translateY(0);opacity:0}25%{opacity:1}100%{transform:translateY(68px);opacity:0}}
 /* strip */
 .strip{border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
 .strip .wrap{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;padding-top:34px;padding-bottom:34px}
@@ -275,13 +302,11 @@ html[data-theme="dark"] .theme i::after,html:has(#themeSw:checked) .theme i::aft
 html.js .rv{opacity:0;transform:translateY(22px);transition:opacity .8s ease,transform .8s ease}
 html.js .rv.in{opacity:1;transform:none}
 html.js .allbtn{display:inline-block}
-h1,h2,h3,.stg-h,.mo-h span,.pt-c p b,.gd-h,.psub,.lead{text-wrap:balance}
+h2,h3,.stg-h,.mo-h span,.pt-c p b,.gd-h,.psub,.lead{text-wrap:balance}
 p,li,.chk .tx{text-wrap:pretty}
-.dates span,.hprice,.ft b{white-space:nowrap}
+.hmeta span,.ft b{white-space:nowrap}
 @media(max-width:1000px){.layers{grid-template-columns:1fr 1fr}}
 @media(max-width:880px){
- .hero .wrap{grid-template-columns:1fr;gap:24px;padding-top:100px}
- .route.rv{display:none}.htxt{text-align:left}.dates,.hprice{justify-content:flex-start}.hlede{margin-left:0}
  .strip .wrap{grid-template-columns:1fr 1fr}
  .blk{grid-template-columns:1fr;gap:26px;padding:56px 24px}
  .blk.rev .blk-img{order:0}.blk-img img{height:340px}
@@ -299,7 +324,7 @@ p,li,.chk .tx{text-wrap:pretty}
  .m3-kt{display:none}
 }
 @media(max-width:600px){.layers{grid-template-columns:1fr}.cta.ghost{margin-left:0}}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.route .rl{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.trail .dr{stroke-dashoffset:0}.tpt,.tlb{opacity:1}}
 /* ---------- встроенный редактор (#edit) */
 .ed-ui[hidden]{display:none!important}
 .ed-rel{position:relative}
@@ -330,13 +355,20 @@ html.tz-wait body{visibility:hidden}
 .ed-hl button.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
 
 @media(max-width:880px){
- .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;--rw:min(calc(100vw - 48px),420px);background:linear-gradient(#081633 0,#0c1f4a 45%,#10285c 100%)}
- .hero .wrap{order:1;position:relative;z-index:2;padding-bottom:0}
- .route.rh{display:block;width:var(--rw);height:auto;margin:0 auto;order:2}
- .hero>img{order:2;position:relative;inset:auto;z-index:1;display:block;width:min(100vw,560px);height:auto;aspect-ratio:3/4;margin:calc(var(--rw) * -.77) auto 0;object-position:50% 50%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%);mask-image:linear-gradient(to bottom,transparent 0,#000 16%)}
- .hero .sc{display:none}
- .route text{paint-order:stroke;stroke:rgba(6,14,40,.6);stroke-width:3px}
- .route .nm{font-size:11px;letter-spacing:1px}.route .al{font-size:11px;letter-spacing:1px}
+ .hero{min-height:0;display:block;background:#081428}
+ .hero-ph{position:relative;inset:auto;width:100%;aspect-ratio:3/4}
+ .hero .sc{background:linear-gradient(to bottom,rgba(4,10,20,.52) 0%,rgba(4,10,20,.04) 26%,rgba(4,10,20,0) 54%,rgba(6,14,30,.55) 88%,#081428 100%)}
+ .hero-ttl{position:absolute;top:7.5vw;left:0;right:0;padding:0 24px;max-width:none;z-index:4}
+ .hero-in{position:static;z-index:auto;padding:clamp(18px,3vh,26px) 0 34px}
+ .hero-in .wrap{display:block}
+ .hero-txt{max-width:none;text-align:left}
+ .hlede{max-width:none}
+ .hmeta,.hcta{justify-content:flex-start}
+ .hcta .cta{flex:1 1 auto;text-align:center}
+ .tlb{font-size:10px;letter-spacing:.16em}
+ .tlb.r{padding-right:18px}.tlb.r::after{width:9px;right:5px}
+ .hero-sc{display:none}
+}
 }
 .m3-live{position:relative;height:var(--mh,600px);min-height:440px}
 .m3-live[hidden],.m3-stage[hidden]{display:none}
@@ -384,35 +416,36 @@ html.tz-wait body{visibility:hidden}
 <script type="application/json" id="tz-edits" data-tz>{"v":1,"t":{},"i":{}}</script>
 <input type="checkbox" id="themeSw" class="theme-sw" aria-label="Тёмная тема"><label for="themeSw" class="theme">Тема<i></i></label>
 
-<header class="hero"><img src="img/hero.jpg" alt="Иван и шерпа на вершине Мера-Пик с флагом «Тепло Земли»" fetchpriority="high"><div class="sc"></div><div class="wrap">
-<svg class="route rv" viewBox="0 0 300 640" aria-label="Набор высоты от Катманду до вершины">
-<path class="rl" d="M30 600 C30 552 110 552 110 505 C110 457 30 457 30 410 C30 362 110 362 110 315 C110 267 30 267 30 220 C30 175 110 175 110 130 C110 85 30 85 30 40"/>
-<circle class="nd" cx="30" cy="600" r="7"/><text class="nm" x="54" y="596">КАТМАНДУ</text><text class="al" x="54" y="620">1 400</text>
-<circle class="nd" cx="110" cy="505" r="7"/><text class="nm" x="134" y="501">ЛУКЛА</text><text class="al" x="134" y="525">2 860</text>
-<circle class="nd" cx="30" cy="410" r="7"/><text class="nm" x="54" y="406">КОТЕ</text><text class="al" x="54" y="430">3 600</text>
-<circle class="nd" cx="110" cy="315" r="7"/><text class="nm" x="134" y="311">ТХАКНАК</text><text class="al" x="134" y="335">4 300</text>
-<circle class="nd" cx="30" cy="220" r="7"/><text class="nm" x="54" y="216">КХАРЕ</text><text class="al" x="54" y="240">4 900</text>
-<circle class="nd" cx="110" cy="130" r="7"/><text class="nm" x="134" y="126">ЛАГЕРЬ</text><text class="al" x="134" y="150">5 800</text>
-<circle class="nd hi" cx="30" cy="40" r="11"/><text class="nm" x="54" y="36">МЕРА-ПИК</text><text class="al" x="54" y="60">6 476</text>
+<header class="hero" id="hero">
+<div class="hero-ph" id="heroPh">
+<img src="img/hero.jpg" alt="Иван и Фура Шерпа на вершине Мера-Пик с флагом «Тепло Земли»" fetchpriority="high">
+<svg class="trail" viewBox="0 0 1500 2000" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+<defs>
+<linearGradient id="tgw" gradientUnits="userSpaceOnUse" x1="40" y1="1440" x2="370" y2="1000"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset=".95" stop-color="#fff" stop-opacity="1"/></linearGradient>
+<linearGradient id="tgd" gradientUnits="userSpaceOnUse" x1="40" y1="1440" x2="370" y2="1000"><stop offset="0" stop-color="#01101f" stop-opacity="0"/><stop offset=".95" stop-color="#01101f" stop-opacity="1"/></linearGradient>
+<path id="tpath" d="M78.0 1392.0 C82.2 1389.6 93.8 1385.0 103.0 1377.7 C112.1 1370.5 123.1 1359.4 132.9 1348.6 C142.6 1337.9 152.0 1323.6 161.7 1313.1 C171.4 1302.7 185.1 1294.9 191.0 1286.0 C196.8 1277.1 197.3 1267.9 196.7 1259.9 C196.2 1251.9 192.5 1245.5 187.6 1237.9 C182.7 1230.4 172.9 1223.5 167.5 1214.7 C162.0 1205.9 158.8 1193.2 154.8 1185.0 C150.8 1176.9 143.8 1172.6 143.3 1165.7 C142.7 1158.9 145.9 1151.9 151.3 1143.8 C156.8 1135.7 165.7 1125.1 175.9 1117.1 C186.1 1109.1 201.9 1104.3 212.4 1095.8 C223.0 1087.2 231.9 1074.4 239.3 1065.7 C246.6 1057.1 253.3 1051.0 256.6 1043.8 C259.9 1036.7 259.3 1031.1 259.0 1022.9 C258.6 1014.7 258.2 1003.1 254.5 994.8 C250.8 986.4 240.8 980.0 236.6 972.8 C232.3 965.5 229.2 957.7 228.8 951.2 C228.4 944.6 230.4 939.2 234.4 933.5 C238.3 927.8 245.9 923.5 252.6 916.8 C259.4 910.1 265.9 899.7 274.9 893.2 C283.8 886.8 295.4 882.1 306.3 877.9 C317.3 873.7 329.2 871.2 340.5 868.1 C351.8 865.0 362.8 863.0 374.1 859.5 C385.4 856.0 396.3 850.2 408.2 847.0 C420.1 843.8 432.9 842.4 445.6 840.4 C458.2 838.4 471.4 837.9 483.9 835.0 C496.4 832.1 508.5 827.4 520.7 822.9 C532.8 818.4 544.5 811.9 556.9 808.0 C569.3 804.1 582.2 801.5 595.2 799.6 C608.1 797.6 621.7 798.4 634.7 796.4 C647.8 794.5 660.5 790.3 673.5 787.9 C686.5 785.5 699.5 783.4 712.7 781.9 C725.9 780.4 739.4 779.8 752.8 779.0 C766.3 778.3 780.2 779.8 793.4 777.2 C806.5 774.6 818.9 767.5 831.8 763.5 C844.7 759.5 857.7 756.4 870.7 753.2 C883.7 750.1 896.6 746.7 909.7 744.4 C922.9 742.1 936.6 742.4 949.7 739.3 C962.7 736.2 975.0 728.7 988.0 726.0 C1001.0 723.3 1014.6 724.0 1027.6 723.1 C1040.7 722.1 1053.5 721.0 1066.4 720.2 C1079.3 719.4 1092.6 720.9 1105.0 718.1 C1117.5 715.3 1128.9 707.1 1141.0 703.6 C1153.1 700.2 1165.9 700.3 1177.5 697.6 C1189.2 694.9 1200.3 690.7 1211.1 687.5 C1221.8 684.3 1232.2 682.7 1241.9 678.3 C1251.6 673.9 1259.6 664.5 1269.2 660.8 C1278.8 657.2 1290.2 658.3 1299.5 656.5 C1308.9 654.8 1317.6 651.9 1325.2 650.2 C1332.8 648.5 1341.4 648.0 1345.2 646.3 C1349.0 644.6 1347.5 641.0 1348.0 640.0"/>
+</defs>
+<use class="t1 dr" href="#tpath"/><use class="t2 dr" href="#tpath"/><use class="t3 dr" href="#tpath"/><use class="t4 dr" href="#tpath"/>
 </svg>
-<svg class="route rh" viewBox="0 0 360 292" aria-label="Набор высоты от Катманду до вершины">
-<path class="rl" d="M22.0 245.0 C30.0 235.2 54.0 200.8 70.0 186.0 C86.0 171.2 102.0 165.7 118.0 156.0 C134.0 146.3 150.0 136.7 166.0 128.0 C182.0 119.3 198.0 114.2 214.0 104.0 C230.0 93.8 246.3 77.7 262.0 67.0 C277.7 56.3 300.3 44.5 308.0 40.0"/>
-<circle class="nd" cx="22" cy="245" r="5"/><text class="nm" x="26" y="264">КАТМАНДУ</text><text class="al" x="26" y="278">1 400</text>
-<circle class="nd" cx="70" cy="186" r="5"/><text class="nm" x="74" y="205">ЛУКЛА</text><text class="al" x="74" y="219">2 860</text>
-<circle class="nd" cx="118" cy="156" r="5"/><text class="nm" x="122" y="175">КОТЕ</text><text class="al" x="122" y="189">3 600</text>
-<circle class="nd" cx="166" cy="128" r="5"/><text class="nm" x="170" y="147">ТХАКНАК</text><text class="al" x="170" y="161">4 300</text>
-<circle class="nd" cx="214" cy="104" r="5"/><text class="nm" x="218" y="123">КХАРЕ</text><text class="al" x="218" y="137">4 900</text>
-<circle class="nd" cx="262" cy="67" r="5"/><text class="nm" x="266" y="86">ЛАГЕРЬ</text><text class="al" x="266" y="100">5 800</text>
-<circle class="nd hi" cx="308" cy="40" r="8"/><text class="nm" x="304" y="10" text-anchor="end">МЕРА-ПИК</text><text class="al" x="304" y="26" text-anchor="end">6 476</text>
-</svg>
-<div class="htxt">
-<p class="kick">НЕПАЛ · ДОЛИНА ХИНКУ</p>
-<h1>МЕРА-ПИК<br><span class="y">6 476 М</span></h1>
-<div class="dates"><span class="yr">2027</span><span>24.03 — 10.04</span></div>
-<div class="hprice"><b>3 300 $</b><span>за участника</span></div>
+<div class="sc"></div><div class="gr"></div>
+<div class="tpts"><i class="tpt m0" data-tx="165" data-ty="1209"></i><i class="tpt m0" data-tx="242" data-ty="925"></i><i class="tpt" data-tx="533" data-ty="819"></i><i class="tpt" data-tx="842" data-ty="761"></i><i class="tpt" data-tx="1117" data-ty="713"></i><i class="tpt s" data-tx="1348" data-ty="640"></i>
+<span class="tlb r" data-tx="1348" data-ty="640">Мера-Пик<i>6 476 м</i></span>
+</div>
+</div>
+<div class="hero-in"><div class="wrap">
+<div class="hero-ttl">
+<p class="kick">Непал · долина Хинку</p>
+<h1>Мера-Пик</h1>
+<p class="coord">27°42′33″N · 86°52′06″E · 18 дней пути</p>
+</div>
+<div class="hero-txt">
 <p class="hlede">Твой первый шеститысячник. Идём к нему лесной долиной Хинку, без толп Эвереста, и при желании возвращаемся вертолётом, не перевалом.</p>
-<a class="cta" href="https://t.me/Hanryy1" target="_blank" rel="noopener">Занять место</a><a class="cta ghost" href="#days">Программа</a>
-</div></div></header>
+<div class="hmeta"><span>24.03 — 10.04 <b>2027</b></span><span>высота <b>6 476 м</b></span><span>18 дней <b>15 на треке</b></span><span>цена <b>3 300 $</b></span></div>
+<div class="hcta"><a class="cta" href="https://t.me/Hanryy1" target="_blank" rel="noopener">Занять место</a><a class="cta ghost" href="#days">Программа</a></div>
+</div>
+</div></div>
+<div class="hero-sc" aria-hidden="true"></div>
+</header>
 
 <section class="strip"><div class="wrap">
 <div class="ft"><b>18</b><span>дней с Катманду</span></div>
@@ -808,6 +841,27 @@ html.tz-wait body{visibility:hidden}
   function apply(dark){ if(dark) root.setAttribute('data-theme','dark'); else root.removeAttribute('data-theme'); }
   try{ if(localStorage.getItem(KEY)==='dark'){ sw.checked=true; apply(true); } }catch(e){}
   sw.addEventListener('change',function(){ apply(sw.checked); try{ localStorage.setItem(KEY, sw.checked?'dark':'light'); }catch(e){} });
+
+  /* обложка: трасса поверх фото */
+  (function(){
+    var ph=document.getElementById('heroPh'), hero=document.getElementById('hero');
+    if(!ph||!hero) return;
+    var IW=1500, IH=2000, svg=ph.querySelector('.trail'), els=[].slice.call(ph.querySelectorAll('[data-tx]'));
+    function place(){
+      var w=ph.clientWidth, h=ph.clientHeight; if(!w||!h) return;
+      var s=Math.max(w/IW,h/IH), ox=(IW*s-w)/2, oy=(IH*s-h)/2;
+      if(svg) svg.style.setProperty('--sw',(1/s)+'px');
+      els.forEach(function(e){
+        var x=e.dataset.tx*s-ox, y=e.dataset.ty*s-oy;
+        e.style.left=x+'px'; e.style.top=y+'px';
+        e.style.visibility=(x>-80&&x<w+80&&y>-30&&y<h+30)?'visible':'hidden';
+      });
+    }
+    place();
+    if(window.ResizeObserver) new ResizeObserver(place).observe(ph); else addEventListener('resize',place);
+    addEventListener('orientationchange',function(){ setTimeout(place,260); });
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ hero.classList.add('go'); }); });
+  })();
 
   /* все дни */
   var btn=document.getElementById('allDays'), days=[].slice.call(document.querySelectorAll('details.stg'));
