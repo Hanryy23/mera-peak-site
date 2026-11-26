@@ -34,6 +34,8 @@ b,strong{font-weight:600}
 .hero .sc{position:absolute;inset:0;background:linear-gradient(to left,rgba(6,6,6,.7),rgba(6,6,6,0) 60%),linear-gradient(to top,rgba(6,6,6,.94),rgba(6,6,6,.45) 45%,rgba(6,6,6,.12) 75%,rgba(6,6,6,.45))}
 .hero .wrap{position:relative;width:100%;display:grid;grid-template-columns:300px 1fr;gap:40px;align-items:center;padding-top:120px;padding-bottom:80px}
 .route{width:300px;height:640px;overflow:visible}
+.route.rh{display:none}
+.route .rl{stroke-linecap:round;stroke-linejoin:round}
 .route .rl{fill:none;stroke:var(--y);stroke-width:3;vector-effect:non-scaling-stroke;stroke-dasharray:1400;stroke-dashoffset:1400;animation:draw 2.6s .3s ease forwards}
 .route .nd{fill:var(--y)} .route .nd.hi{stroke:rgba(6,6,6,.6);stroke-width:3}
 .route text{font-family:"IBM Plex Mono","DejaVu Sans Mono",monospace;letter-spacing:2px}
@@ -279,7 +281,7 @@ p,li,.chk .tx{text-wrap:pretty}
 @media(max-width:1000px){.layers{grid-template-columns:1fr 1fr}}
 @media(max-width:880px){
  .hero .wrap{grid-template-columns:1fr;gap:24px;padding-top:100px}
- .route{width:240px;height:400px;order:2}.htxt{text-align:left}.dates,.hprice{justify-content:flex-start}.hlede{margin-left:0}
+ .route.rv{display:none}.htxt{text-align:left}.dates,.hprice{justify-content:flex-start}.hlede{margin-left:0}
  .strip .wrap{grid-template-columns:1fr 1fr}
  .blk{grid-template-columns:1fr;gap:26px;padding:56px 24px}
  .blk.rev .blk-img{order:0}.blk-img img{height:340px}
@@ -328,15 +330,24 @@ html.tz-wait body{visibility:hidden}
 .ed-hl button.gh{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
 
 @media(max-width:880px){
- .hero{background:linear-gradient(#081633,#10285c 55%,#0B0B0C)}
- .hero>img{top:auto;bottom:0;height:var(--hih,62%);object-position:50% 45%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 22%);mask-image:linear-gradient(to bottom,transparent 0,#000 22%)}
- .route{margin-left:auto}
- .hero .sc{background:linear-gradient(to bottom,rgba(6,6,6,0) 0%,rgba(6,6,6,.05) 55%,rgba(6,6,6,.55) 100%)}
- .route text{paint-order:stroke;stroke:rgba(0,0,0,.55);stroke-width:4px}
+ .hero{display:flex;flex-direction:column;align-items:stretch;min-height:0;--rw:min(calc(100vw - 48px),420px);background:linear-gradient(#081633 0,#0c1f4a 45%,#10285c 100%)}
+ .hero .wrap{order:1;position:relative;z-index:2;padding-bottom:0}
+ .route.rh{display:block;width:var(--rw);height:auto;margin:0 auto;order:2}
+ .hero>img{order:2;position:relative;inset:auto;z-index:1;display:block;width:min(100vw,560px);height:auto;aspect-ratio:3/4;margin:calc(var(--rw) * -.77) auto 0;object-position:50% 50%;-webkit-mask-image:linear-gradient(to bottom,transparent 0,#000 16%);mask-image:linear-gradient(to bottom,transparent 0,#000 16%)}
+ .hero .sc{display:none}
+ .route text{paint-order:stroke;stroke:rgba(6,14,40,.6);stroke-width:3px}
+ .route .nm{font-size:11px;letter-spacing:1px}.route .al{font-size:11px;letter-spacing:1px}
 }
 .m3-live{position:relative;height:var(--mh,600px);min-height:440px}
 .m3-live[hidden],.m3-stage[hidden]{display:none}
-.m3-live .lb{position:relative;transform:none}
+.mk{width:14px;height:14px;border-radius:50%;background:#F2C230;border:2.5px solid #fff;box-shadow:0 1px 6px rgba(0,0,0,.55);cursor:default}
+.mk .t{position:absolute;left:20px;top:50%;transform:translateY(-50%);white-space:nowrap;font:600 12px/1.15 Montserrat,Arial,sans-serif;color:#fff;text-shadow:0 0 2px #000,0 0 5px rgba(0,0,0,.95),0 0 10px rgba(0,0,0,.7);pointer-events:none;opacity:0;transition:opacity .25s}
+.mk .t i{display:block;font:500 10.5px "IBM Plex Mono",monospace;font-style:normal;color:#F2C230}
+.mk.lab .t,.mk.hi .t{opacity:1}
+.mk.l .t{left:auto;right:20px;text-align:right}
+.mk.hi{width:20px;height:20px;background:#fff;border-color:#F2C230;box-shadow:0 0 0 6px rgba(242,194,48,.35),0 1px 6px rgba(0,0,0,.5);z-index:2}
+.mk.hi .t{left:26px}.mk.hi.l .t{left:auto;right:26px}
+.m3.live .m3-ctl button[data-v=play],.m3.live .m3-kt,.m3.live .m3-hint{display:none}
 .m3-walker{width:16px;height:16px;border-radius:50%;background:#fff;border:3px solid #F2C230;box-shadow:0 0 0 6px rgba(242,194,48,.3)}
 .m3-live .maplibregl-ctrl-attrib{font-size:10px}
 /* --- v2: обложка на телефоне, видео без рамок, линия пути, новая карта --- */
@@ -374,8 +385,8 @@ html.tz-wait body{visibility:hidden}
 <input type="checkbox" id="themeSw" class="theme-sw" aria-label="Тёмная тема"><label for="themeSw" class="theme">Тема<i></i></label>
 
 <header class="hero"><img src="img/hero.jpg" alt="Иван и шерпа на вершине Мера-Пик с флагом «Тепло Земли»" fetchpriority="high"><div class="sc"></div><div class="wrap">
-<svg class="route" viewBox="0 0 300 640" aria-label="Набор высоты от Катманду до вершины">
-<polyline class="rl" points="30,600 110,505 30,410 110,315 30,220 110,130 30,40"/>
+<svg class="route rv" viewBox="0 0 300 640" aria-label="Набор высоты от Катманду до вершины">
+<path class="rl" d="M30 600 C30 552 110 552 110 505 C110 457 30 457 30 410 C30 362 110 362 110 315 C110 267 30 267 30 220 C30 175 110 175 110 130 C110 85 30 85 30 40"/>
 <circle class="nd" cx="30" cy="600" r="7"/><text class="nm" x="54" y="596">КАТМАНДУ</text><text class="al" x="54" y="620">1 400</text>
 <circle class="nd" cx="110" cy="505" r="7"/><text class="nm" x="134" y="501">ЛУКЛА</text><text class="al" x="134" y="525">2 860</text>
 <circle class="nd" cx="30" cy="410" r="7"/><text class="nm" x="54" y="406">КОТЕ</text><text class="al" x="54" y="430">3 600</text>
@@ -383,6 +394,16 @@ html.tz-wait body{visibility:hidden}
 <circle class="nd" cx="30" cy="220" r="7"/><text class="nm" x="54" y="216">КХАРЕ</text><text class="al" x="54" y="240">4 900</text>
 <circle class="nd" cx="110" cy="130" r="7"/><text class="nm" x="134" y="126">ЛАГЕРЬ</text><text class="al" x="134" y="150">5 800</text>
 <circle class="nd hi" cx="30" cy="40" r="11"/><text class="nm" x="54" y="36">МЕРА-ПИК</text><text class="al" x="54" y="60">6 476</text>
+</svg>
+<svg class="route rh" viewBox="0 0 360 292" aria-label="Набор высоты от Катманду до вершины">
+<path class="rl" d="M22.0 245.0 C30.0 235.2 54.0 200.8 70.0 186.0 C86.0 171.2 102.0 165.7 118.0 156.0 C134.0 146.3 150.0 136.7 166.0 128.0 C182.0 119.3 198.0 114.2 214.0 104.0 C230.0 93.8 246.3 77.7 262.0 67.0 C277.7 56.3 300.3 44.5 308.0 40.0"/>
+<circle class="nd" cx="22" cy="245" r="5"/><text class="nm" x="26" y="264">КАТМАНДУ</text><text class="al" x="26" y="278">1 400</text>
+<circle class="nd" cx="70" cy="186" r="5"/><text class="nm" x="74" y="205">ЛУКЛА</text><text class="al" x="74" y="219">2 860</text>
+<circle class="nd" cx="118" cy="156" r="5"/><text class="nm" x="122" y="175">КОТЕ</text><text class="al" x="122" y="189">3 600</text>
+<circle class="nd" cx="166" cy="128" r="5"/><text class="nm" x="170" y="147">ТХАКНАК</text><text class="al" x="170" y="161">4 300</text>
+<circle class="nd" cx="214" cy="104" r="5"/><text class="nm" x="218" y="123">КХАРЕ</text><text class="al" x="218" y="137">4 900</text>
+<circle class="nd" cx="262" cy="67" r="5"/><text class="nm" x="266" y="86">ЛАГЕРЬ</text><text class="al" x="266" y="100">5 800</text>
+<circle class="nd hi" cx="308" cy="40" r="8"/><text class="nm" x="304" y="10" text-anchor="end">МЕРА-ПИК</text><text class="al" x="304" y="26" text-anchor="end">6 476</text>
 </svg>
 <div class="htxt">
 <p class="kick">НЕПАЛ · ДОЛИНА ХИНКУ</p>
@@ -1320,13 +1341,17 @@ function loadLib(){ return new Promise((res,rej)=>{ if(window.maplibregl) return
   const sc=document.createElement('script'); sc.src='https://unpkg.com/maplibre-gl@4.7.1/dist/maplibre-gl.js'; sc.onload=()=>window.maplibregl?res():rej(); sc.onerror=rej; document.head.appendChild(sc); }); }
 async function probe(){ try{ const c=new AbortController(); const t=setTimeout(()=>c.abort(),4000);
   const r=await fetch(DEM.replace('{z}','0').replace('{x}','0').replace('{y}','0'),{signal:c.signal,mode:'cors'}); clearTimeout(t); return r.ok; }catch(e){ return false; } }
+function smooth(pts,n){ for(let k=0;k<n;k++){ const o=[pts[0]]; for(let i=0;i<pts.length-1;i++){ const p=pts[i],q=pts[i+1]; o.push([.75*p[0]+.25*q[0],.75*p[1]+.25*q[1]],[.25*p[0]+.75*q[0],.25*p[1]+.75*q[1]]); } o.push(pts[pts.length-1]); pts=o; } return pts; }
 async function startLive(){
   if(!liveBox||!(await probe())) return;
   try{ await loadLib(); }catch(e){ return; }
   const ML=window.maplibregl; const LL=k=>[S[k].ll[1],S[k].ll[0]];
-  const route=seq.map(LL);
-  const map=new ML.Map({container:liveBox, attributionControl:{compact:true}, cooperativeGestures:true, maxPitch:80,
-    center:[86.81,27.672], zoom:W<600?10.6:11.3, pitch:60, bearing:-25,
+  const route=smooth(seq.map(LL),3);
+  const bb=route.reduce((b,p)=>b.extend(p),new ML.LngLatBounds(route[0],route[0]));
+  const mob=W<600, pad={top:50,bottom:40,left:mob?28:60,right:mob?70:90};
+  const map=new ML.Map({container:liveBox, attributionControl:{compact:true}, cooperativeGestures:true, maxPitch:80, pitch:58, bearing:-22,
+    bounds:bb, fitBoundsOptions:{padding:pad,pitch:58,bearing:-22},
+    locale:{'CooperativeGesturesHandler.WindowsHelpText':'Ctrl + колёсико — масштаб карты','CooperativeGesturesHandler.MacHelpText':'⌘ + колёсико — масштаб карты','CooperativeGesturesHandler.MobileHelpText':'Двигай карту двумя пальцами'},
     style:{version:8,
       sources:{sat:{type:'raster',tiles:[SAT],tileSize:256,maxzoom:17,attribution:'Imagery © Esri, Maxar, Earthstar Geographics'},
                dem:{type:'raster-dem',tiles:[DEM],encoding:'terrarium',tileSize:256,maxzoom:13,attribution:'Terrain: Mapzen / AWS Terrain Tiles'},
@@ -1336,29 +1361,25 @@ async function startLive(){
   map.addControl(new ML.NavigationControl({visualizePitch:true}),'bottom-right');
   map.on('load',()=>{
     map.addSource('rt',{type:'geojson',data:{type:'Feature',geometry:{type:'LineString',coordinates:route}}});
-    map.addSource('done',{type:'geojson',data:{type:'Feature',geometry:{type:'LineString',coordinates:[route[0],route[0]]}}});
-    map.addSource('heli',{type:'geojson',data:{type:'FeatureCollection',features:['kothe','khare'].map(k=>({type:'Feature',geometry:{type:'LineString',coordinates:[LL(k),LL('lukla')]}}))}});
-    map.addLayer({id:'heli',type:'line',source:'heli',paint:{'line-color':'#ffffff','line-width':2,'line-dasharray':[2,2],'line-opacity':.8}});
-    map.addLayer({id:'rt-case',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#ffffff','line-width':6,'line-opacity':.75}});
-    map.addLayer({id:'rt',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#F2C230','line-width':3.5,'line-opacity':.6}});
-    map.addLayer({id:'done',type:'line',source:'done',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#F2C230','line-width':5}});
+    map.addLayer({id:'rt-case',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'round'},paint:{'line-color':'#000','line-width':6,'line-opacity':.28,'line-blur':1.5}});
+    map.addLayer({id:'rt',type:'line',source:'rt',layout:{'line-join':'round','line-cap':'butt'},paint:{'line-color':'#F2C230','line-width':3,'line-dasharray':[2,1.6]}});
   });
-  const MK={}; Object.keys(S).forEach(k=>{ const el=document.createElement('div'); el.className='lb live'+(S[k].top?' top':''); el.textContent=S[k].n;
-    const i=document.createElement('i'); i.textContent=S[k].a.toLocaleString('ru-RU')+' м'; el.appendChild(i);
-    MK[k]=new ML.Marker({element:el,anchor:'bottom',offset:[0,-6]}).setLngLat(LL(k)).addTo(map); });
-  const dot=document.createElement('div'); dot.className='m3-walker'; const W8=new ML.Marker({element:dot}).setLngLat(route[0]).addTo(map);
-  let pos=0;
-  const doneTo=n=>{ const src=map.getSource('done'); if(src) src.setData({type:'Feature',geometry:{type:'LineString',coordinates:route.slice(0,Math.max(2,n+1))}}); };
+  const LAB={lukla:1,kothe:1,thaknak:1,khare:1,summit:1}, LEFT={summit:1,kothe:1};
+  const MK={}; Object.keys(S).forEach(k=>{ const el=document.createElement('div'); el.className='mk'+(LAB[k]?' lab':'')+(LEFT[k]?' l':'');
+    const t=document.createElement('span'); t.className='t'; t.textContent=S[k].n; const i=document.createElement('i'); i.textContent=S[k].a.toLocaleString('ru-RU')+' м'; t.appendChild(i); el.appendChild(t);
+    MK[k]=new ML.Marker({element:el,anchor:'center'}).setLngLat(LL(k)).addTo(map); });
+  const home=(p,b)=>{ const c=map.cameraForBounds(bb,{padding:pad,bearing:b}); return {center:c.center,zoom:c.zoom,pitch:p,bearing:b}; };
   LIVE={
     show(d,user){ Object.keys(MK).forEach(k=>MK[k].getElement().classList.toggle('hi',d[3].includes(k)));
-      const n=d[4], k=d[3][0]; pos=n; W8.setLngLat(route[n]); doneTo(n);
-      return new Promise(r=>{ map.flyTo({center:LL(k),zoom:d[0]===1||d[0]>=17?11.6:13,pitch:62,bearing:-25+n*6,duration:reduce?0:(user?1800:2200),essential:true}); map.once('moveend',()=>r()); }); },
-    view(v){ map.easeTo(v==='top'?{pitch:0,bearing:0,zoom:W<600?10.6:11.3,center:[86.81,27.672],duration:1200}:{pitch:60,bearing:-25,duration:1200}); },
-    reset(){ doneTo(0); }
+      const k=d[3][0], overview=d[0]===1||d[0]>=17;
+      const to=overview?Object.assign(home(58,-22),{duration:reduce?0:1800}):{center:LL(k),zoom:12.6,pitch:62,bearing:-22+d[4]*5,duration:reduce?0:(user?1800:2200)};
+      return new Promise(r=>{ map.flyTo(Object.assign({essential:true},to)); map.once('moveend',()=>r()); }); },
+    view(v){ map.easeTo(Object.assign(home(v==='top'?0:58,v==='top'?0:-22),{duration:1200})); },
+    reset(){}
   };
   stage.hidden=true; liveBox.hidden=false; if(north) north.hidden=true;
-  const hint=stage.parentNode.querySelector('.m3-hint'); if(hint) hint.textContent='два пальца — повернуть и наклонить';
-  if(liveNote) liveNote.textContent='Спутниковая съёмка и рельеф — настоящие; линия маршрута проведена по точкам ночёвок и примерная.';
+  stage.parentNode.classList.add('live');
+  if(liveNote) liveNote.textContent='Спутниковая съёмка и рельеф настоящие. Пунктир проведён по точкам ночёвок и показывает маршрут приблизительно.';
   map.resize();
 }
 startLive();
